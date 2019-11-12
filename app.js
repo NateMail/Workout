@@ -22,6 +22,7 @@ mongoose.connection.on("error", error => {
 });
 // Routes
 const authRoutes = require("./routes/authRoutes");
+const liftRoutes = require("./routes/liftRoutes");
 
 // middleware
 app.use(morgan("dev"));
@@ -30,6 +31,7 @@ app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
 app.use("/", authRoutes);
+app.use("/", liftRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello");
