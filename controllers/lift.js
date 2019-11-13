@@ -36,3 +36,28 @@ exports.liftById = (req, res, next, id) => {
     next();
   });
 };
+
+exports.isOwner = (req, res, next) => {
+  let isOwner = req.lift && req.auth && req.lift.addedBy._id == req.auth._id;
+
+  if (!isOwner) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
+};
+
+exports.deleteLift = (req, res) => {
+  let lift = req.lift;
+  lift.remove((error, lift) => {
+    if (error) {
+      return res.status(400).json({
+        error: error
+      });
+    }
+    res.json({
+      message: "Lift deleted!"
+    });
+  });
+};
