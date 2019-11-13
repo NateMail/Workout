@@ -13,7 +13,7 @@ exports.createLift = (req, res, next) => {
     let lift = new Lift(fields);
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
-    lift.addedBy = req.profile;
+    lift.addedBy = req.profile._id;
     lift.save((error, result) => {
       if (error) {
         return res.status(400).json({
@@ -46,6 +46,20 @@ exports.isOwner = (req, res, next) => {
     });
   }
   next();
+};
+
+exports.liftsByUser = (req, res) => {
+  Lift.find({ addedBy: req.profile._id })
+    .select("workoutName weight sets reps _id")
+    .sort("_created")
+    .exec((error, lifts) => {
+      if (error) {
+        return res.status(400).json({
+          error: error
+        });
+      }
+      res.json({ lifts });
+    });
 };
 
 exports.deleteLift = (req, res) => {

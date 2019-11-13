@@ -3,12 +3,13 @@ const {
   createLift,
   liftById,
   isOwner,
+  liftsByUser,
   deleteLift
 } = require("../controllers/lift");
 
 const { requireSignin } = require("../controllers/auth");
 const { userById } = require("../controllers/user");
-const { createLiftValidator } = require("../controllers/validator");
+const { createLiftValidator } = require("../controllers/validator/index");
 
 const router = express.Router();
 
@@ -19,6 +20,9 @@ router.post(
   createLift,
   createLiftValidator
 );
+
+// Get lifts
+router.get("/lift/by/:userId", requireSignin, liftsByUser);
 
 // Delete a lift
 router.delete("/lift/:liftId", requireSignin, isOwner, deleteLift);

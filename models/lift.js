@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
 
 const liftSchema = new mongoose.Schema({
-  name: {
+  workoutName: {
     type: String,
     required: true
   },
@@ -14,20 +14,17 @@ const liftSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  updated: Date,
-  work: {
-    weight: {
-      type: [Number],
-      required: true
-    },
-    reps: {
-      type: [Number],
-      required: true
-    },
-    sets: {
-      type: [Number],
-      required: true
-    }
+  weight: {
+    type: Number,
+    required: true
+  },
+  reps: {
+    type: Number,
+    required: true
+  },
+  sets: {
+    type: Number,
+    required: true
   }
 });
 

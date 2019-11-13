@@ -13,7 +13,7 @@ exports.createBody = (req, res, next) => {
     let body = new Body(fields);
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
-    body.addedBy = req.profile;
+    body.addedBy = req.profile._id;
     body.save((error, result) => {
       if (error) {
         return res.status(400).json({
