@@ -5,14 +5,14 @@ exports.createLiftValidator = (req, res, next) => {
     .check("workoutName", "Name of exercise must be 4 to 150 characters")
     .isLength({ min: 4, max: 150 });
 
-  req.check("weight", "Please enter a weight").notEmpty();
-  req.check("weight", "Weight must be a number").isInt();
+  req.check("work.weight", "Please enter a weight").notEmpty();
+  req.check("work.weight", "Weight must be a number").isInt();
 
-  req.check("reps", "Please add number of reps").notEmpty();
-  req.check("reps", "Reps must be a number").isInt();
+  req.check("work.reps", "Please add number of reps").notEmpty();
+  req.check("work.reps", "Reps must be a number").isInt();
 
-  req.check("sets", "Please add number of sets").notEmpty();
-  req.check("sets", "Sets must be a number").isInt();
+  req.check("work.sets", "Please add number of sets").notEmpty();
+  req.check("work.sets", "Sets must be a number").isInt();
 
   //check for errors
   const errors = req.validationErrors();

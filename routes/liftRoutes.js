@@ -4,6 +4,7 @@ const {
   liftById,
   isOwner,
   liftsByUser,
+  updateLift,
   deleteLift
 } = require("../controllers/lift");
 
@@ -23,6 +24,9 @@ router.post(
 
 // Get lifts
 router.get("/lift/by/:userId", requireSignin, liftsByUser);
+
+// Update lifts
+router.put("/lift/:liftId", requireSignin, isOwner, updateLift);
 
 // Delete a lift
 router.delete("/lift/:liftId", requireSignin, isOwner, deleteLift);

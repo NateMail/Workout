@@ -1,5 +1,6 @@
 const Lift = require("../models/lift");
 const formidable = require("formidable");
+const _ = require("lodash");
 
 exports.createLift = (req, res, next) => {
   let form = new formidable.IncomingForm();
@@ -50,7 +51,7 @@ exports.isOwner = (req, res, next) => {
 
 exports.liftsByUser = (req, res) => {
   Lift.find({ addedBy: req.profile._id })
-    .select("workoutName weight sets reps _id")
+    .select("workoutName work _id")
     .sort("_created")
     .exec((error, lifts) => {
       if (error) {
@@ -72,6 +73,29 @@ exports.deleteLift = (req, res) => {
     }
     res.json({
       message: "Lift deleted!"
+    });
+  });
+};
+
+exports.updateLift = (req, res, next) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, (error, fields) => {
+    if (error) {
+      return res.status(400).json({
+        error: "Lift could not be updated"
+      });
+    }
+    let lift = req.lift;
+    lift = _.extend(lift, fields);
+    lift.updated = Date.now();
+    lift.save((error, result) => {
+      if (error) {
+        return res.status(400).json({
+          error: error
+        });
+      }
+      res.json(lift);
     });
   });
 };

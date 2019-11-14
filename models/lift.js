@@ -14,6 +14,7 @@ const liftSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  updated: Date,
   work: {
     weight: [
       {
