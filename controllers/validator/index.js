@@ -70,7 +70,7 @@ exports.createBodyValidator = (req, res, next) => {
 
   //sex
   req.check("sex", "Enter your sex").notEmpty();
-  req.check("sex", "Enter a valid sex").isLength({ min: 4, max: 6 });
+  req.check("sex", "Enter a valid sex").isLength({ min: 4, max: 7 });
 
   //check for errors
   const errors = req.validationErrors();

@@ -15,10 +15,12 @@ const bodySchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  weight: {
-    type: [Number],
-    required: true
-  },
+  weight: [
+    {
+      type: Number,
+      required: true
+    }
+  ],
   age: {
     type: Number,
     required: true
