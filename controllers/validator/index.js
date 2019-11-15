@@ -1,3 +1,27 @@
+exports.createCardioValidator = (req, res, next) => {
+  // name
+  req.check("workoutName", "Which exercise are you doing?").notEmpty();
+  req
+    .check("workoutName", "Name of exercise must be 4 to 150 characters")
+    .isLength({ min: 4, max: 150 });
+
+  req.check("work.time", "Please enter a time").notEmpty();
+  req.check("work.time", "Time must be a number").isInt();
+
+  req.check("work.distance", "Distance cannot be empty").notEmpty();
+  req.check("work.distance", "Distance must be a number").isInt();
+
+  //check for errors
+  const errors = req.validationErrors();
+  // if error show the rirst one as they happen
+  if (errors) {
+    const firstError = errors.map(error => error.msg)[0];
+    return res.status(400).json({ error: firstError });
+  }
+  // proceed to next middleware
+  next();
+};
+
 exports.createLiftValidator = (req, res, next) => {
   // name
   req.check("workoutName", "Which exercise are you doing?").notEmpty();

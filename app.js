@@ -24,6 +24,7 @@ mongoose.connection.on("error", error => {
 const authRoutes = require("./routes/authRoutes");
 const liftRoutes = require("./routes/liftRoutes");
 const bodyRoutes = require("./routes/bodyRoutes");
+const cardioRoutes = require("./routes/cardioRoutes");
 
 // middleware
 app.use(morgan("dev"));
@@ -34,6 +35,7 @@ app.use(cors());
 app.use("/", authRoutes);
 app.use("/", liftRoutes);
 app.use("/", bodyRoutes);
+app.use("/", cardioRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello");
