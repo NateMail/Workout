@@ -23,7 +23,12 @@ router.post(
 );
 
 // Get cardio
-router.get("/cardio/by/:userId", requireSignin, cardioByUser);
+router.get(
+  "/cardio/by/:userId/:cardioId",
+  requireSignin,
+  isOwner,
+  cardioByUser
+);
 
 // Update cardio
 router.put("/cardio/:cardioId", requireSignin, isOwner, updateCardio);
