@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { signin, authenticate } from "../auth";
 // import SocialLogin from "./SocialLogin";
 
@@ -95,12 +95,6 @@ class Signin extends Component {
             Submit
           </button>
         </form>
-        {/* <p>
-          <Link to="/forgot-password" className="text-danger">
-            {" "}
-            Forgot Password
-          </Link>
-        </p> */}
       </div>
     );
   }
