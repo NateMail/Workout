@@ -15,6 +15,19 @@ exports.createBody = (req, res, next) => {
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
     body.addedBy = req.profile._id;
+    if (body.sex === "Female") {
+      let weight = (body.weight / 2.2) * 9.6;
+      let height = body.height * 2.54 * 1.8;
+      let age = body.age * 4.7;
+      body.bmr = 655 + weight + height - age;
+    } else if (body.sex === "Male") {
+      let weight = (body.weight / 2.2) * 13.7;
+      let height = body.height * 2.54 * 5;
+      let age = body.age * 6.8;
+      body.bmr = 66 + weight + height - age;
+    }
+    body.tdee = body.bmr * body.activity;
+    console.log(body);
     body.save((error, result) => {
       if (error) {
         return res.status(400).json({

@@ -13,6 +13,7 @@ class NewBody extends Component {
       bmr: 0,
       tdee: 0,
       sex: "",
+      activity: 0,
       error: "",
       user: {},
       loading: false,
@@ -26,13 +27,19 @@ class NewBody extends Component {
   }
 
   isValid = () => {
-    const { height, weight, age, sex } = this.state;
-    if (sex.length === 0 || weight === 0 || age === 0 || height === 0) {
+    const { height, weight, age, sex, activity } = this.state;
+    if (
+      sex.length === 0 ||
+      weight === 0 ||
+      age === 0 ||
+      height === 0 ||
+      activity === 0
+    ) {
       this.setState({ error: "All fields are required", loading: false });
       return false;
     }
 
-    if (weight < 0 || age < 0 || height < 0) {
+    if (weight < 0 || age < 0 || height < 0 || activity < 0) {
       this.setState({ error: "All fields must be positive", loading: false });
       return false;
     }
@@ -41,6 +48,7 @@ class NewBody extends Component {
   };
 
   handleChange = name => event => {
+    console.log(this.state);
     this.setState({ error: "" });
     const value = event.target.value;
     this.userBodyData.set(name, value);
@@ -59,13 +67,15 @@ class NewBody extends Component {
         if (data.error) this.setState({ error: data.error });
         else {
           this.setState({
-            loading: false,
             height: 0,
             weight: 0,
             age: 0,
             bmr: 0,
             tdee: 0,
             sex: "",
+            activity: 0,
+            error: "",
+            loading: false,
             redirectToProfile: true
           });
         }
@@ -122,6 +132,60 @@ class NewBody extends Component {
             checked={this.state.sex === "Male"}
             className="form-control"
             value="Male"
+          />
+        </div>
+      </div>
+
+      <h6 className="text-muted">Activity Level</h6>
+      <div className="row" style={{ marginBottom: "10px" }}>
+        <div className="form-check">
+          <label className="text-muted">Sedentary</label>
+          <input
+            onChange={this.handleChange("activity")}
+            type="radio"
+            checked={this.state.activity === 1.2}
+            className="form-control"
+            value="1.2"
+          />
+        </div>
+        <div className="form-check">
+          <label className="text-muted">Lightly Active</label>
+          <input
+            onChange={this.handleChange("activity")}
+            type="radio"
+            checked={this.state.activity === 1.375}
+            className="form-control"
+            value="1.375"
+          />
+        </div>
+        <div className="form-check">
+          <label className="text-muted">Moderately Active</label>
+          <input
+            onChange={this.handleChange("activity")}
+            type="radio"
+            checked={this.state.activity === 1.55}
+            className="form-control"
+            value="1.55"
+          />
+        </div>
+        <div className="form-check">
+          <label className="text-muted">Very Active</label>
+          <input
+            onChange={this.handleChange("activity")}
+            type="radio"
+            checked={this.state.activity === 1.725}
+            className="form-control"
+            value="1.725"
+          />
+        </div>
+        <div className="form-check">
+          <label className="text-muted">Extremely Active</label>
+          <input
+            onChange={this.handleChange("activity")}
+            type="radio"
+            checked={this.state.activity === 1.9}
+            className="form-control"
+            value="1.9"
           />
         </div>
       </div>

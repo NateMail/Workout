@@ -29,6 +29,10 @@ const bodySchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  activity: {
+    type: Number,
+    required: true
+  },
   bmr: {
     type: Number
   },
