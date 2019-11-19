@@ -34,3 +34,26 @@ export const authenticate = (jwt, next) => {
     next();
   }
 };
+
+export const signout = next => {
+  if (typeof window !== "undefined") localStorage.removeItem("jwt");
+  next();
+  return fetch("http://localhost:8181/signout", {
+    method: "GET"
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};
+
+export const isAuthenticated = () => {
+  if (typeof window == "undefined") {
+    return false;
+  }
+  if (localStorage.getItem("jwt")) {
+    return JSON.parse(localStorage.getItem("jwt"));
+  } else {
+    return false;
+  }
+};
