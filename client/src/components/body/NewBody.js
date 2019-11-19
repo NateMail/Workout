@@ -32,6 +32,11 @@ class NewBody extends Component {
       return false;
     }
 
+    if (weight < 0 || age < 0 || height < 0) {
+      this.setState({ error: "All fields must be positive", loading: false });
+      return false;
+    }
+
     return true;
   };
 
@@ -68,10 +73,10 @@ class NewBody extends Component {
     }
   };
 
-  newBodyForm = (height, weight, age, sex) => (
+  newBodyForm = (height, weight, age) => (
     <form>
       <div className="form-group">
-        <label className="text-muted">Height</label>
+        <label className="text-muted">Height in inches</label>
         <input
           onChange={this.handleChange("height")}
           type="number"
@@ -80,7 +85,7 @@ class NewBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">Weight</label>
+        <label className="text-muted">Weight in pounds</label>
         <input
           onChange={this.handleChange("weight")}
           type="number"
@@ -97,37 +102,29 @@ class NewBody extends Component {
           value={age}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">Sex</label>
-        <input
-          onChange={this.handleChange("sex")}
-          type="texy"
-          className="form-control"
-          value={sex}
-        />
+      <h6 className="text-muted">Sex</h6>
+      <div className="row" style={{ marginBottom: "10px" }}>
+        <div className="form-check">
+          <label className="text-muted">Female</label>
+          <input
+            onChange={this.handleChange("sex")}
+            type="radio"
+            checked={this.state.sex === "Female"}
+            className="form-control"
+            value="Female"
+          />
+        </div>
+        <div className="form-check">
+          <label className="text-muted">Male</label>
+          <input
+            onChange={this.handleChange("sex")}
+            type="radio"
+            checked={this.state.sex === "Male"}
+            className="form-control"
+            value="Male"
+          />
+        </div>
       </div>
-
-      {/* <h6 className="text-muted">Sex</h6>
-      <div className="form-check">
-        <label className="text-muted">Female</label>
-        <input
-          onChange={this.handleChange("sex")}
-          type="radio"
-          checked={this.state.sex === "Female"}
-          className="form-control"
-          value={sex}
-        />
-      </div>
-      <div className="form-check">
-        <label className="text-muted">Male</label>
-        <input
-          onChange={this.handleChange("sex")}
-          type="radio"
-          checked={this.state.sex === "Male"}
-          className="form-control"
-          value={sex}
-        />
-      </div> */}
 
       <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
         Create Your Body Type
