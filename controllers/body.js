@@ -16,7 +16,7 @@ exports.createBody = (req, res, next) => {
     req.profile.salt = undefined;
     body.addedBy = req.profile._id;
     if (body.sex === "Female") {
-      let weight = (body.weight / 2.2) * 9.6;
+      let weight = (body.weight[body.weight.length - 1] / 2.2) * 9.6;
       let height = body.height * 2.54 * 1.8;
       let age = body.age * 4.7;
       body.bmr = 655 + weight + height - age;

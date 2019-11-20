@@ -43,15 +43,6 @@ const Nav = ({ history }) => (
         <>
           <li className="nav-item">
             <Link
-              to={`/user/${isAuthenticated().user._id}`}
-              style={isActive(history, `/user/${isAuthenticated().user._id}`)}
-              className="nav-link"
-            >
-              {`${isAuthenticated().user.name}'s profile`}
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
               to={`/body/by/${isAuthenticated().user._id}`}
               style={isActive(
                 history,
@@ -59,7 +50,7 @@ const Nav = ({ history }) => (
               )}
               className="nav-link"
             >
-              {`${isAuthenticated().user.name}'s body`}
+              {`${isAuthenticated().user.name}'s Profile`}
             </Link>
           </li>
           <li className="nav-item">
