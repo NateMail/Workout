@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Signup from "./components/user/SignUp";
 import Signin from "./components/user/SignIn";
 import NewBody from "./components/body/NewBody";
+import GetBody from "./components/body/GetBody";
 
 const MainRouter = () => (
   <div>
@@ -15,6 +16,7 @@ const MainRouter = () => (
       <Route exact path="/signup" component={Signup} />
       <Route exact path="/signin" component={Signin} />
       <PrivateRoute exact path="/body/new/:userId" component={NewBody} />
+      <PrivateRoute exact path="/body/by/:userId" component={GetBody} />
     </Switch>
   </div>
 );

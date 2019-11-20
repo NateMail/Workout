@@ -51,6 +51,18 @@ const Nav = ({ history }) => (
             </Link>
           </li>
           <li className="nav-item">
+            <Link
+              to={`/body/by/${isAuthenticated().user._id}`}
+              style={isActive(
+                history,
+                `/body/by/${isAuthenticated().user._id}`
+              )}
+              className="nav-link"
+            >
+              {`${isAuthenticated().user.name}'s body`}
+            </Link>
+          </li>
+          <li className="nav-item">
             <span
               className="nav-link"
               style={

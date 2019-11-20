@@ -112,8 +112,10 @@ class NewBody extends Component {
           value={age}
         />
       </div>
-      <h6 className="text-muted">Sex</h6>
-      <div className="row" style={{ marginBottom: "10px" }}>
+      <h6 className="text-muted" style={{ marginBottom: "10px" }}>
+        Sex
+      </h6>
+      <div className="row" style={{ marginBottom: "15px" }}>
         <div className="form-check">
           <label className="text-muted">Female</label>
           <input
@@ -136,8 +138,13 @@ class NewBody extends Component {
         </div>
       </div>
 
-      <h6 className="text-muted">Activity Level</h6>
-      <div className="row" style={{ marginBottom: "10px" }}>
+      <h6
+        className="text-muted"
+        style={{ marginBottom: "10px", marginTop: "10px" }}
+      >
+        Activity Level
+      </h6>
+      <div className="row" style={{ marginBottom: "15px" }}>
         <div className="form-check">
           <label className="text-muted">Sedentary</label>
           <input

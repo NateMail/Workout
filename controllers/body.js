@@ -89,7 +89,7 @@ exports.updateBody = (req, res, next) => {
 exports.userBody = (req, res) => {
   Body.find({ addedBy: req.profile._id })
     .populate("addedBy", "_id name")
-    .select("_id height weight age sex")
+    .select("_id height weight age sex bmr tdee")
     .sort("_created")
     .exec((error, body) => {
       if (error) {

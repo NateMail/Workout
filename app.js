@@ -25,6 +25,7 @@ const authRoutes = require("./routes/authRoutes");
 const liftRoutes = require("./routes/liftRoutes");
 const bodyRoutes = require("./routes/bodyRoutes");
 const cardioRoutes = require("./routes/cardioRoutes");
+const userRoutes = require("./routes/user");
 
 // middleware
 app.use(morgan("dev"));
@@ -36,6 +37,7 @@ app.use("/", authRoutes);
 app.use("/", liftRoutes);
 app.use("/", bodyRoutes);
 app.use("/", cardioRoutes);
+app.use("/", userRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello");
