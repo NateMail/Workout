@@ -10,7 +10,8 @@ class GetBody extends Component {
     super();
     this.state = {
       bodys: [],
-      redirectToSignin: false
+      redirectToSignin: false,
+      redirectToCreateBody: false
     };
   }
 
@@ -31,7 +32,9 @@ class GetBody extends Component {
       if (data.error) {
         console.log(data.error);
       } else {
-        console.log(data.body);
+        if (data.body.length === 0) {
+          this.setState({ redirectToCreateBody: true });
+        }
         this.setState({ bodys: data.body });
         console.log("This is bodys", this.state.bodys);
       }
@@ -49,9 +52,10 @@ class GetBody extends Component {
   }
 
   render() {
-    console.log(this.state.bodys);
-    const { redirectToSignin, bodys } = this.state;
+    const { redirectToSignin, redirectToCreateBody, bodys } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
+
+    if (redirectToCreateBody) return <Redirect to="/body/new/:userId" />;
 
     return (
       <div>
