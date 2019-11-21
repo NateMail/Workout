@@ -21,7 +21,7 @@ exports.createBody = (req, res, next) => {
       let age = body.age * 4.7;
       body.bmr = 655 + weight + height - age;
     } else if (body.sex === "Male") {
-      let weight = (body.weight / 2.2) * 13.7;
+      let weight = (body.weight[body.weight.length - 1] / 2.2) * 13.7;
       let height = body.height * 2.54 * 5;
       let age = body.age * 6.8;
       body.bmr = 66 + weight + height - age;
@@ -52,6 +52,7 @@ exports.bodyById = (req, res, next, id) => {
 };
 
 exports.isOwner = (req, res, next) => {
+  console.log(req.body);
   let isOwner = req.body && req.auth && req.body.addedBy._id == req.auth._id;
 
   if (!isOwner) {

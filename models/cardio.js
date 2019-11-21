@@ -15,20 +15,18 @@ const cardioSchema = new mongoose.Schema({
     default: Date.now
   },
   updated: Date,
-  work: {
-    time: [
-      {
-        type: Number,
-        required: true
-      }
-    ],
-    distance: [
-      {
-        type: Number,
-        required: true
-      }
-    ]
-  },
+  time: [
+    {
+      type: Number,
+      required: true
+    }
+  ],
+  distance: [
+    {
+      type: Number,
+      required: true
+    }
+  ],
   pace: Number
 });
 
