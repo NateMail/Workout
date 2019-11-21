@@ -17,6 +17,12 @@ const Home = ({ history }) => (
         >
           {`${isAuthenticated().user.name}'s Body`}
         </Link>
+        <Link
+          to={`/cardio/by/${isAuthenticated().user._id}`}
+          className="nav-link"
+        >
+          {`${isAuthenticated().user.name}'s Cardio`}
+        </Link>
       </>
     )}
   </div>
