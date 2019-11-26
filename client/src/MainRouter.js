@@ -10,6 +10,7 @@ import GetBody from "./components/body/GetBody";
 import NewCardio from "./components/cardio/NewCardio";
 import GetCardio from "./components/cardio/GetCardio";
 import NewLift from "./components/lift/NewLift";
+import GetLIft from "./components/lift/GetLift";
 
 const MainRouter = () => (
   <div>
@@ -23,6 +24,7 @@ const MainRouter = () => (
       <PrivateRoute exact path="/cardio/new/:userId" component={NewCardio} />
       <PrivateRoute exact path="/cardio/by/:userId" component={GetCardio} />
       <PrivateRoute exact path="/lift/new/:userId" component={NewLift} />
+      <PrivateRoute exact path="/lift/by/:userId" component={GetLIft} />
     </Switch>
   </div>
 );

@@ -51,7 +51,7 @@ exports.isOwner = (req, res, next) => {
 
 exports.liftsByUser = (req, res) => {
   Lift.find({ addedBy: req.profile._id })
-    .select("workoutName work _id")
+    .select("workoutName weight reps sets _id")
     .sort("_created")
     .exec((error, lifts) => {
       if (error) {

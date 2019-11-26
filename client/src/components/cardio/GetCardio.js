@@ -46,10 +46,10 @@ class GetCardio extends Component {
   }
 
   render() {
-    const { redirectToSignin, redirectToCreateBody, cardios } = this.state;
+    const { redirectToSignin, redirectToCreateCardio, cardios } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
 
-    if (redirectToCreateBody) return <Redirect to="/cardio/new/:userId" />;
+    if (redirectToCreateCardio) return <Redirect to="/cardio/new/:userId" />;
 
     return (
       <div>

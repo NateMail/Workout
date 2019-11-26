@@ -23,6 +23,12 @@ const Home = ({ history }) => (
         >
           {`${isAuthenticated().user.name}'s Cardio`}
         </Link>
+        <Link
+          to={`/lift/by/${isAuthenticated().user._id}`}
+          className="nav-link"
+        >
+          {`${isAuthenticated().user.name}'s Lifts`}
+        </Link>
       </>
     )}
   </div>
