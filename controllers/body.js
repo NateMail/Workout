@@ -52,8 +52,7 @@ exports.bodyById = (req, res, next, id) => {
 };
 
 exports.isOwner = (req, res, next) => {
-  console.log(req.body);
-  let isOwner = req.body && req.auth && req.body.addedBy._id == req.auth._id;
+  let isOwner = req.profile && req.auth && req.profile._id == req.auth._id;
 
   if (!isOwner) {
     return res.status(403).json({

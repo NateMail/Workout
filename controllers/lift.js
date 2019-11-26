@@ -39,7 +39,7 @@ exports.liftById = (req, res, next, id) => {
 };
 
 exports.isOwner = (req, res, next) => {
-  let isOwner = req.lift && req.auth && req.lift.addedBy._id == req.auth._id;
+  let isOwner = req.profile && req.auth && req.profile._id == req.auth._id;
 
   if (!isOwner) {
     return res.status(403).json({

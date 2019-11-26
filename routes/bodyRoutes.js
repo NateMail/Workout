@@ -23,7 +23,7 @@ router.post(
 );
 
 // Show body
-router.get("/body/by/:userId", requireSignin, userBody);
+router.get("/body/by/:userId", requireSignin, isOwner, userBody);
 
 // Delete body
 router.delete("/body/:bodyId", requireSignin, isOwner, deleteBody);

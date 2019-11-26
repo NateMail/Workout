@@ -40,8 +40,7 @@ exports.cardioById = (req, res, next, id) => {
 };
 
 exports.isOwner = (req, res, next) => {
-  let isOwner =
-    req.cardio && req.auth && req.cardio.addedBy._id == req.auth._id;
+  let isOwner = req.profile && req.auth && req.profile._id == req.auth._id;
 
   if (!isOwner) {
     return res.status(403).json({
@@ -52,6 +51,7 @@ exports.isOwner = (req, res, next) => {
 };
 
 exports.cardioByUser = (req, res) => {
+  console.log(req.headers);
   Cardio.find({ addedBy: req.profile._id })
     .select("workoutName created time distance pace _id")
     .sort("_created")

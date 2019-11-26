@@ -23,7 +23,7 @@ router.post(
 );
 
 // Get lifts
-router.get("/lift/by/:userId/", requireSignin, liftsByUser);
+router.get("/lift/by/:userId/", requireSignin, isOwner, liftsByUser);
 
 // Update lifts
 router.put("/lift/:liftId", requireSignin, isOwner, updateLift);
