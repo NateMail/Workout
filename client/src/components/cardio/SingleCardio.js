@@ -48,7 +48,11 @@ class SingleCardio extends Component {
   renderCardio = cardio => {
     return (
       <div className="card-body">
-        <p className="card-text">{cardio.pace}</p>
+        <ul>
+          <li className="card-text">{cardio.time} minutes</li>
+          <li className="card-text">{cardio.distance} miles</li>
+          <li className="card-text">{cardio.pace} minutes per mile</li>
+        </ul>
         <br />
 
         <div className="d-inline-block">
@@ -57,14 +61,16 @@ class SingleCardio extends Component {
           </Link>
 
           {isAuthenticated().user &&
-            isAuthenticated().user._id === cardio.addedBy._id && (
+            isAuthenticated().user._id === cardio.addedBy && (
               <>
-                {/* <Link
-                  to={`/post/edit/${post._id}`}
-                  className="btn btn-raised btn-warning btn-sm mr-5"
-                >
-                  Update Post
-                </Link> */}
+                {
+                  <Link
+                    to={`/cardio/edit/${cardio._id}`}
+                    className="btn btn-raised btn-warning btn-sm mr-5"
+                  >
+                    Update Workout
+                  </Link>
+                }
                 <button
                   className="btn btn-raised btn-danger"
                   onClick={this.deletConfirmed}
