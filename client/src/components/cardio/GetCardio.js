@@ -65,6 +65,9 @@ class GetCardio extends Component {
                     <ListGroupItem>
                       Pace: 1 mile every {c.pace} minutes
                     </ListGroupItem>
+                    <ListGroupItem>
+                      Date: {new Date(c.created).toDateString()}
+                    </ListGroupItem>
                   </ListGroup>
                 </Card.Body>
               </Card>

@@ -63,6 +63,9 @@ class GetCardio extends Component {
                     <ListGroupItem>{l.weight} lbs</ListGroupItem>
                     <ListGroupItem>Reps: {l.reps} </ListGroupItem>
                     <ListGroupItem>Sets: {l.sets}</ListGroupItem>
+                    <ListGroupItem>
+                      Date: {new Date(l.created).toDateString()}
+                    </ListGroupItem>
                   </ListGroup>
                 </Card.Body>
               </Card>

@@ -53,7 +53,7 @@ exports.isOwner = (req, res, next) => {
 
 exports.cardioByUser = (req, res) => {
   Cardio.find({ addedBy: req.profile._id })
-    .select("workoutName time distance pace _id")
+    .select("workoutName created time distance pace _id")
     .sort("_created")
     .exec((error, cardios) => {
       if (error) {
