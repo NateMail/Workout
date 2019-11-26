@@ -99,3 +99,18 @@ exports.updateLift = (req, res, next) => {
     });
   });
 };
+
+exports.isCreator = (req, res, next) => {
+  let isCreator = req.lift && req.auth && req.lift.addedBy._id == req.auth._id;
+
+  if (!isCreator) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
+};
+
+exports.singleLift = (req, res) => {
+  return res.json(req.lift);
+};

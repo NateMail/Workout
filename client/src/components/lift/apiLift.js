@@ -28,3 +28,31 @@ export const getLift = (userId, token) => {
     })
     .catch(err => console.log(err));
 };
+
+export const singleLift = (liftId, token) => {
+  return fetch(`http://localhost:8181/lift/${liftId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};
+
+export const remove = (liftId, token) => {
+  return fetch(`http://localhost:8181/lift/${liftId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};

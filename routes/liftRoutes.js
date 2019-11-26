@@ -2,8 +2,10 @@ const express = require("express");
 const {
   createLift,
   liftById,
+  isCreator,
   isOwner,
   liftsByUser,
+  singleLift,
   updateLift,
   deleteLift
 } = require("../controllers/lift");
@@ -25,11 +27,13 @@ router.post(
 // Get lifts
 router.get("/lift/by/:userId/", requireSignin, isOwner, liftsByUser);
 
+router.get("/lift/:liftId", requireSignin, isCreator, singleLift);
+
 // Update lifts
-router.put("/lift/:liftId", requireSignin, isOwner, updateLift);
+router.put("/lift/:liftId", requireSignin, isCreator, updateLift);
 
 // Delete a lift
-router.delete("/lift/:liftId", requireSignin, isOwner, deleteLift);
+router.delete("/lift/:liftId", requireSignin, isCreator, deleteLift);
 
 router.param("userId", userById);
 router.param("liftId", liftById);
