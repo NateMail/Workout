@@ -27,3 +27,31 @@ export const getCardio = (userId, token) => {
     })
     .catch(err => console.log(err));
 };
+
+export const singleCardio = (cardioId, token) => {
+  return fetch(`http://localhost:8181/cardio/${cardioId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};
+
+export const remove = (cardioId, token) => {
+  return fetch(`http://localhost:8181/cardio/${cardioId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};

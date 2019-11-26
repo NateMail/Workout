@@ -3,7 +3,9 @@ const {
   createCardio,
   cardioById,
   isOwner,
+  isCreator,
   cardioByUser,
+  singleCardio,
   updateCardio,
   deleteCardio
 } = require("../controllers/cardio");
@@ -25,11 +27,13 @@ router.post(
 // Get cardio
 router.get("/cardio/by/:userId", requireSignin, isOwner, cardioByUser);
 
+router.get("/cardio/:cardioId", requireSignin, isCreator, singleCardio);
+
 // Update cardio
-router.put("/cardio/:cardioId", requireSignin, isOwner, updateCardio);
+router.put("/cardio/:cardioId", requireSignin, isCreator, updateCardio);
 
 // Delete a cardio
-router.delete("/cardio/:cardioId", requireSignin, isOwner, deleteCardio);
+router.delete("/cardio/:cardioId", requireSignin, isCreator, deleteCardio);
 
 router.param("userId", userById);
 router.param("cardioId", cardioById);

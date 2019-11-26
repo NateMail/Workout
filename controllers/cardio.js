@@ -51,7 +51,6 @@ exports.isOwner = (req, res, next) => {
 };
 
 exports.cardioByUser = (req, res) => {
-  console.log(req.headers);
   Cardio.find({ addedBy: req.profile._id })
     .select("workoutName created time distance pace _id")
     .sort("_created")
@@ -100,4 +99,20 @@ exports.updateCardio = (req, res, next) => {
       res.json(cardio);
     });
   });
+};
+
+exports.singleCardio = (req, res) => {
+  return res.json(req.cardio);
+};
+
+exports.isCreator = (req, res, next) => {
+  let isCreator =
+    req.cardio && req.auth && req.cardio.addedBy._id == req.auth._id;
+
+  if (!isCreator) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
 };

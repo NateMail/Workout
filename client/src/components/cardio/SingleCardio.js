@@ -1,0 +1,104 @@
+import React, { Component } from "react";
+import { singleCardio, remove } from "./apiCardio";
+import { Link, Redirect } from "react-router-dom";
+import { isAuthenticated } from "../auth";
+
+class SingleCardio extends Component {
+  state = {
+    cardio: "",
+    redirectToHome: false,
+    redirectToSignIn: false
+  };
+
+  componentDidMount = () => {
+    const cardioId = this.props.match.params.cardioId;
+    const token = isAuthenticated().token;
+    singleCardio(cardioId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({
+          cardio: data
+        });
+      }
+    });
+  };
+
+  deleteCardio = () => {
+    const cardioId = this.props.match.params.cardioId;
+    const token = isAuthenticated().token;
+    remove(cardioId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({ redirectToHome: true });
+      }
+    });
+  };
+
+  deletConfirmed = () => {
+    let answer = window.confirm(
+      "Are you sure you want to delete this cardio exercise?"
+    );
+    if (answer) {
+      this.deleteCardio();
+    }
+  };
+
+  renderCardio = cardio => {
+    return (
+      <div className="card-body">
+        <p className="card-text">{cardio.pace}</p>
+        <br />
+
+        <div className="d-inline-block">
+          <Link to={`/`} className="btn btn-raised btn-primary btn-sm mr-5">
+            Back to Cardio
+          </Link>
+
+          {isAuthenticated().user &&
+            isAuthenticated().user._id === cardio.addedBy._id && (
+              <>
+                {/* <Link
+                  to={`/post/edit/${post._id}`}
+                  className="btn btn-raised btn-warning btn-sm mr-5"
+                >
+                  Update Post
+                </Link> */}
+                <button
+                  className="btn btn-raised btn-danger"
+                  onClick={this.deletConfirmed}
+                >
+                  Delete Workout
+                </button>
+              </>
+            )}
+        </div>
+      </div>
+    );
+  };
+
+  render() {
+    const { cardio, redirectToHome, redirectToSignIn } = this.state;
+
+    if (redirectToHome) {
+      return <Redirect to={"/"} />;
+    } else if (redirectToSignIn) {
+      return <Redirect to={"/signin"} />;
+    }
+    return (
+      <div className="container">
+        <h2 className="display-2 mt-5 mb-5">{cardio.workoutName}</h2>
+        {!cardio ? (
+          <div className="jumbotron text-center">
+            <h2>Loading...</h2>
+          </div>
+        ) : (
+          this.renderCardio(cardio)
+        )}
+      </div>
+    );
+  }
+}
+
+export default SingleCardio;
