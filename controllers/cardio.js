@@ -15,9 +15,7 @@ exports.createCardio = (req, res, next) => {
     req.profile.hashed_password = undefined;
     req.profile.salt = undefined;
     cardio.addedBy = req.profile._id;
-    cardio.pace =
-      cardio.time[cardio.time.length - 1] /
-      cardio.distance[cardio.distance.length - 1];
+    cardio.pace = cardio.time / cardio.distance;
     cardio.save((error, result) => {
       if (error) {
         return res.status(400).json({

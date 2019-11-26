@@ -15,25 +15,17 @@ const liftSchema = new mongoose.Schema({
     default: Date.now
   },
   updated: Date,
-  work: {
-    weight: [
-      {
-        type: Number,
-        required: true
-      }
-    ],
-    reps: [
-      {
-        type: Number,
-        required: true
-      }
-    ],
-    sets: [
-      {
-        type: Number,
-        required: true
-      }
-    ]
+  weight: {
+    type: Number,
+    required: true
+  },
+  reps: {
+    type: Number,
+    required: true
+  },
+  sets: {
+    type: Number,
+    required: true
   }
 });
 

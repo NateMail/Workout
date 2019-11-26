@@ -10,6 +10,7 @@ class NewCardio extends Component {
       workoutName: "",
       time: 0,
       distance: 0,
+      pace: 0,
       error: "",
       user: {},
       loading: false,
