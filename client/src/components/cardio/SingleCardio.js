@@ -60,7 +60,10 @@ class SingleCardio extends Component {
         <br />
 
         <div className="d-inline-block">
-          <Link to={`/`} className="btn btn-raised btn-primary btn-sm mr-5">
+          <Link
+            to={`/cardio/by/${cardio.addedBy}`}
+            className="btn btn-raised btn-primary btn-sm mr-5"
+          >
             Back to Cardio
           </Link>
 

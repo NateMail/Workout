@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getLift } from "./apiLift";
@@ -40,6 +40,11 @@ class GetLift extends Component {
     });
   };
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log(e);
+  }
+
   componentDidMount() {
     const userId = this.props.match.params.userId;
     this.init(userId);
@@ -65,6 +70,9 @@ class GetLift extends Component {
                     <ListGroupItem>Sets: {l.sets}</ListGroupItem>
                     <ListGroupItem>
                       Date: {new Date(l.created).toDateString()}
+                    </ListGroupItem>
+                    <ListGroupItem>
+                      <Link to={`/lift/${l._id}`}>Edit/Delete</Link>
                     </ListGroupItem>
                   </ListGroup>
                 </Card.Body>

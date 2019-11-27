@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getCardio } from "./apiCardio";
@@ -69,6 +69,9 @@ class GetCardio extends Component {
                       Date: {new Date(c.created).toDateString()}
                     </ListGroupItem>
                   </ListGroup>
+                  <ListGroupItem>
+                    <Link to={`/cardio/${c._id}`}>Edit/Delete</Link>
+                  </ListGroupItem>
                 </Card.Body>
               </Card>
             </div>

@@ -61,7 +61,10 @@ class SingleLift extends Component {
         <br />
 
         <div className="d-inline-block">
-          <Link to={`/`} className="btn btn-raised btn-primary btn-sm mr-5">
+          <Link
+            to={`/lift/by/${lift.addedBy}`}
+            className="btn btn-raised btn-primary btn-sm mr-5"
+          >
             Back to Lift
           </Link>
 
