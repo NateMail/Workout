@@ -53,9 +53,9 @@ class SingleCardio extends Component {
     return (
       <div className="card-body">
         <ul>
-          <li className="card-text">{cardio.time} minutes</li>
-          <li className="card-text">{cardio.distance} miles</li>
-          <li className="card-text">{cardio.pace} minutes per mile</li>
+          <li className="card-text">Time: {cardio.time} minutes</li>
+          <li className="card-text">Distance: {cardio.distance} miles</li>
+          <li className="card-text">Pace: {cardio.pace} minutes per mile</li>
         </ul>
         <br />
 

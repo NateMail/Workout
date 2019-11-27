@@ -55,3 +55,18 @@ export const remove = (cardioId, token) => {
     })
     .catch(error => console.log(error));
 };
+
+export const update = (cardioId, token, cardio) => {
+  return fetch(`http://localhost:8181/cardio/edit/${cardioId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: cardio
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};

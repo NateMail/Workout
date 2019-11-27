@@ -30,7 +30,7 @@ router.get("/cardio/by/:userId", requireSignin, isOwner, cardioByUser);
 router.get("/cardio/:cardioId", requireSignin, isCreator, singleCardio);
 
 // Update cardio
-router.put("/cardio/:cardioId", requireSignin, isCreator, updateCardio);
+router.put("/cardio/edit/:cardioId", requireSignin, isCreator, updateCardio);
 
 // Delete a cardio
 router.delete("/cardio/:cardioId", requireSignin, isCreator, deleteCardio);

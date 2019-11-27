@@ -40,11 +40,6 @@ class GetLift extends Component {
     });
   };
 
-  handleClick(e) {
-    e.preventDefault();
-    console.log(e);
-  }
-
   componentDidMount() {
     const userId = this.props.match.params.userId;
     this.init(userId);

@@ -90,6 +90,7 @@ exports.updateCardio = (req, res, next) => {
     let cardio = req.cardio;
     cardio = _.extend(cardio, fields);
     cardio.updated = Date.now();
+    cardio.pace = cardio.time / cardio.distance;
     cardio.save((error, result) => {
       if (error) {
         return res.status(400).json({
