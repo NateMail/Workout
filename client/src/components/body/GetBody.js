@@ -36,7 +36,6 @@ class GetBody extends Component {
           this.setState({ redirectToCreateBody: true });
         }
         this.setState({ bodys: data.body });
-        console.log("This is bodys", this.state.bodys);
       }
     });
   };
@@ -57,6 +56,14 @@ class GetBody extends Component {
 
     if (redirectToCreateBody) return <Redirect to="/body/new/:userId" />;
 
+    if (bodys !== undefined && bodys.length !== 0) {
+      bodys.forEach(bod => {
+        bod.tdee = bod.tdee.toFixed(2);
+        bod.bmr = bod.bmr.toFixed(2);
+        bod.lose = (bod.tdee - bod.tdee * 0.2).toFixed(2);
+      });
+    }
+
     return (
       <div>
         {bodys.map(function(b, idx) {
@@ -66,16 +73,27 @@ class GetBody extends Component {
                 <Card.Body>
                   <Card.Title>{b.addedBy.name}</Card.Title>
                   <Card.Text>
-                    Some quick example text to build on the card title and make
-                    up the bulk of the card's content.
+                    BMR is the base metabolic rate. Which is the bare minimum to
+                    sustain life and ensure longevity. TDEE is an estimate of
+                    your daily calorie requirements.
                   </Card.Text>
                   <ListGroup className="list-group-flush">
-                    <ListGroupItem>Weight: {b.weight}</ListGroupItem>
-                    <ListGroupItem>Height: {b.height}</ListGroupItem>
+                    <ListGroupItem>
+                      Starting Weight: {b.weight[0]} pounds
+                    </ListGroupItem>
+                    <ListGroupItem>
+                      Current Weight: {b.weight[b.weight.length - 1]} pounds
+                    </ListGroupItem>
+                    <ListGroupItem>Height: {b.height} inches</ListGroupItem>
                     <ListGroupItem>Age: {b.age}</ListGroupItem>
                     <ListGroupItem>Sex: {b.sex}</ListGroupItem>
-                    <ListGroupItem>BMR: {b.bmr}</ListGroupItem>
-                    <ListGroupItem>TDEE: {b.tdee}</ListGroupItem>
+                    <ListGroupItem>BMR: {b.bmr} calories</ListGroupItem>
+                    <ListGroupItem>TDEE: {b.tdee} calories</ListGroupItem>
+                    <ListGroupItem>
+                      Lose around one pound a week:
+                      <hr />
+                      {b.lose} calories a day
+                    </ListGroupItem>
                   </ListGroup>
                 </Card.Body>
               </Card>
