@@ -115,7 +115,7 @@ class NewBody extends Component {
       <h6 className="text-muted" style={{ marginBottom: "10px" }}>
         Sex
       </h6>
-      <div className="row" style={{ marginBottom: "15px" }}>
+      <div className="row" style={{ textAlign: "center" }}>
         <div className="form-check">
           <label className="text-muted">Female</label>
           <input
@@ -138,64 +138,28 @@ class NewBody extends Component {
         </div>
       </div>
 
-      <h6
-        className="text-muted"
-        style={{ marginBottom: "10px", marginTop: "10px" }}
-      >
+      <h6 className="text-muted" style={{ marginBottom: "10px" }}>
         Activity Level
       </h6>
-      <div className="row" style={{ marginBottom: "15px" }}>
-        <div className="form-check">
-          <label className="text-muted">Sedentary</label>
-          <input
-            onChange={this.handleChange("activity")}
-            type="radio"
-            checked={this.state.activity === 1.2}
-            className="form-control"
-            value="1.2"
-          />
-        </div>
-        <div className="form-check">
-          <label className="text-muted">Lightly Active</label>
-          <input
-            onChange={this.handleChange("activity")}
-            type="radio"
-            checked={this.state.activity === 1.375}
-            className="form-control"
-            value="1.375"
-          />
-        </div>
-        <div className="form-check">
-          <label className="text-muted">Moderately Active</label>
-          <input
-            onChange={this.handleChange("activity")}
-            type="radio"
-            checked={this.state.activity === 1.55}
-            className="form-control"
-            value="1.55"
-          />
-        </div>
-        <div className="form-check">
-          <label className="text-muted">Very Active</label>
-          <input
-            onChange={this.handleChange("activity")}
-            type="radio"
-            checked={this.state.activity === 1.725}
-            className="form-control"
-            value="1.725"
-          />
-        </div>
-        <div className="form-check">
-          <label className="text-muted">Extremely Active</label>
-          <input
-            onChange={this.handleChange("activity")}
-            type="radio"
-            checked={this.state.activity === 1.9}
-            className="form-control"
-            value="1.9"
-          />
-        </div>
-      </div>
+      <ul>
+        <li>Sedentary: Little to no exercise</li>
+        <li>Lightly Active: Light exerciese 1-3 days per week</li>
+        <li>Moderately Active: Moderate exercise 3-5 days per week</li>
+        <li>Very Active: Heavy exercise 6-7 days per week</li>
+        <li>Extremely Active: Very heavy exercise, training 2X per day</li>
+      </ul>
+      <select
+        style={{ marginBottom: "20px" }}
+        className="form-control"
+        value={this.state.activity}
+        onChange={this.handleChange("activity")}
+      >
+        <option value="1.2">Sedentary</option>
+        <option value="1.375">Lightly Active</option>
+        <option value="1.55">Moderately Active</option>
+        <option value="1.725">Very Active</option>
+        <option value="1.9">Extremely Active</option>
+      </select>
 
       <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
         Create Your Body Type
