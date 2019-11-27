@@ -5,7 +5,7 @@ import { isAuthenticated } from "../auth";
 import { getLift } from "./apiLift";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
-class GetCardio extends Component {
+class GetLift extends Component {
   constructor() {
     super();
     this.state = {
@@ -77,4 +77,4 @@ class GetCardio extends Component {
   }
 }
 
-export default GetCardio;
+export default GetLift;

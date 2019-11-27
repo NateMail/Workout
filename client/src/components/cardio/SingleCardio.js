@@ -13,15 +13,19 @@ class SingleCardio extends Component {
   componentDidMount = () => {
     const cardioId = this.props.match.params.cardioId;
     const token = isAuthenticated().token;
-    singleCardio(cardioId, token).then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        this.setState({
-          cardio: data
-        });
-      }
-    });
+    if (!token) {
+      this.setState({ redirectToSignIn: true });
+    } else {
+      singleCardio(cardioId, token).then(data => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          this.setState({
+            cardio: data
+          });
+        }
+      });
+    }
   };
 
   deleteCardio = () => {

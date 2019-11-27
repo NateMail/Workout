@@ -13,15 +13,21 @@ class SingleLift extends Component {
   componentDidMount = () => {
     const liftId = this.props.match.params.liftId;
     const token = isAuthenticated().token;
-    singleLift(liftId, token).then(data => {
-      if (data.error) {
-        console.log(data.error);
-      } else {
-        this.setState({
-          lift: data
-        });
-      }
-    });
+    if (!token) {
+      this.setState({
+        redirectToSignIn: true
+      });
+    } else {
+      singleLift(liftId, token).then(data => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          this.setState({
+            lift: data
+          });
+        }
+      });
+    }
   };
 
   deleteLift = () => {
