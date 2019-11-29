@@ -56,3 +56,18 @@ export const remove = (liftId, token) => {
     })
     .catch(error => console.log(error));
 };
+
+export const update = (liftId, token, lift) => {
+  return fetch(`http://localhost:8181/lift/edit/${liftId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: lift
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};

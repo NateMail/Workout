@@ -30,7 +30,7 @@ router.get("/lift/by/:userId/", requireSignin, isOwner, liftsByUser);
 router.get("/lift/:liftId", requireSignin, isCreator, singleLift);
 
 // Update lifts
-router.put("/lift/:liftId", requireSignin, isCreator, updateLift);
+router.put("/lift/edit/:liftId", requireSignin, isCreator, updateLift);
 
 // Delete a lift
 router.delete("/lift/:liftId", requireSignin, isCreator, deleteLift);
