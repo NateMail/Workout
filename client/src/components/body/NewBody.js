@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
-import { create } from "./apiBody";
+import { create, getBody } from "./apiBody";
 import { Redirect } from "react-router-dom";
 
 class NewBody extends Component {
@@ -17,7 +17,8 @@ class NewBody extends Component {
       error: "",
       user: {},
       loading: false,
-      redirectToHome: false
+      redirectToHome: false,
+      redirectToGetBody: false
     };
   }
 
@@ -63,21 +64,31 @@ class NewBody extends Component {
       const userId = isAuthenticated().user._id;
       const token = isAuthenticated().token;
 
-      create(userId, token, this.userBodyData).then(data => {
-        if (data.error) this.setState({ error: data.error });
-        else {
-          this.setState({
-            height: 0,
-            weight: 0,
-            age: 0,
-            bmr: 0,
-            tdee: 0,
-            sex: "",
-            activity: 0,
-            error: "",
-            loading: false,
-            redirectToProfile: true
-          });
+      getBody(userId, token).then(data => {
+        if (data.error) {
+          console.log(data.error);
+        } else {
+          if (data.body) {
+            this.setState({ redirectToGetBody: true });
+          } else {
+            create(userId, token, this.userBodyData).then(data => {
+              if (data.error) this.setState({ error: data.error });
+              else {
+                this.setState({
+                  height: 0,
+                  weight: 0,
+                  age: 0,
+                  bmr: 0,
+                  tdee: 0,
+                  sex: "",
+                  activity: 0,
+                  error: "",
+                  loading: false,
+                  redirectToProfile: true
+                });
+              }
+            });
+          }
         }
       });
     }
@@ -176,11 +187,16 @@ class NewBody extends Component {
       user,
       error,
       loading,
-      redirectToProfile
+      redirectToProfile,
+      redirectToGetBody
     } = this.state;
 
     if (redirectToProfile) {
       return <Redirect to={`/user/${user._id}`} />;
+    }
+
+    if (redirectToGetBody) {
+      return <Redirect to={`/body/by/${user._id}`} />;
     }
 
     return (
