@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { isAuthenticated } from "../auth";
+import { read } from "../user/apiUser";
 import { create, getBody } from "./apiBody";
 import { Redirect } from "react-router-dom";
 
@@ -7,6 +8,7 @@ class NewBody extends Component {
   constructor() {
     super();
     this.state = {
+      bodys: [],
       height: 0,
       weight: 0,
       age: 0,
@@ -17,15 +19,40 @@ class NewBody extends Component {
       error: "",
       user: {},
       loading: false,
-      redirectToHome: false,
-      redirectToGetBody: false
+      redirectToHome: false
     };
   }
 
   componentDidMount() {
     this.userBodyData = new FormData();
     this.setState({ user: isAuthenticated().user });
+    const userId = this.props.match.params.userId;
+    this.init(userId);
   }
+
+  init = userId => {
+    const token = isAuthenticated().token;
+    read(userId, token).then(data => {
+      if (data.error) {
+        this.setState({ redirectToSignin: true });
+      } else {
+        this.loadBody(data._id);
+      }
+    });
+  };
+
+  loadBody = userId => {
+    const token = isAuthenticated().token;
+    getBody(userId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        if (data.body.length >= 1) {
+          this.setState({ bodys: data.body, redirectToHome: true });
+        }
+      }
+    });
+  };
 
   isValid = () => {
     const { height, weight, age, sex, activity } = this.state;
@@ -63,34 +90,38 @@ class NewBody extends Component {
     if (this.isValid()) {
       const userId = isAuthenticated().user._id;
       const token = isAuthenticated().token;
-
-      getBody(userId, token).then(data => {
-        if (data.error) {
-          console.log(data.error);
-        } else {
-          if (data.body) {
-            this.setState({ redirectToGetBody: true });
-          } else {
-            create(userId, token, this.userBodyData).then(data => {
-              if (data.error) this.setState({ error: data.error });
-              else {
-                this.setState({
-                  height: 0,
-                  weight: 0,
-                  age: 0,
-                  bmr: 0,
-                  tdee: 0,
-                  sex: "",
-                  activity: 0,
-                  error: "",
-                  loading: false,
-                  redirectToProfile: true
-                });
-              }
+      if (this.state.bodys.length < 1) {
+        create(userId, token, this.userBodyData).then(data => {
+          if (data.error) this.setState({ error: data.error });
+          else {
+            this.setState({
+              height: 0,
+              weight: 0,
+              age: 0,
+              bmr: 0,
+              tdee: 0,
+              sex: "",
+              activity: 0,
+              error: "",
+              loading: false,
+              redirectToProfile: true
             });
           }
-        }
-      });
+        });
+      } else {
+        this.setState({
+          height: 0,
+          weight: 0,
+          age: 0,
+          bmr: 0,
+          tdee: 0,
+          sex: "",
+          activity: 0,
+          error: "",
+          loading: false,
+          redirectToProfile: true
+        });
+      }
     }
   };
 
@@ -187,16 +218,11 @@ class NewBody extends Component {
       user,
       error,
       loading,
-      redirectToProfile,
-      redirectToGetBody
+      redirectToProfile
     } = this.state;
 
     if (redirectToProfile) {
       return <Redirect to={`/user/${user._id}`} />;
-    }
-
-    if (redirectToGetBody) {
-      return <Redirect to={`/body/by/${user._id}`} />;
     }
 
     return (
