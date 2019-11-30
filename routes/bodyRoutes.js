@@ -4,8 +4,7 @@ const {
   bodyById,
   updateBody,
   isOwner,
-  userBody,
-  deleteBody
+  userBody
 } = require("../controllers/body");
 
 const { requireSignin } = require("../controllers/auth");
@@ -24,9 +23,6 @@ router.post(
 
 // Show body
 router.get("/body/by/:userId", requireSignin, isOwner, userBody);
-
-// Delete body
-router.delete("/body/:bodyId", requireSignin, isOwner, deleteBody);
 
 // Update body
 router.put("/body/:bodyId", requireSignin, isOwner, updateBody);

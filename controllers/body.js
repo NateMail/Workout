@@ -27,7 +27,6 @@ exports.createBody = (req, res, next) => {
       body.bmr = 66 + weight + height - age;
     }
     body.tdee = body.bmr * body.activity;
-    console.log(body);
     body.save((error, result) => {
       if (error) {
         return res.status(400).json({
@@ -99,18 +98,4 @@ exports.userBody = (req, res) => {
       }
       res.json({ body });
     });
-};
-
-exports.deleteBody = (req, res) => {
-  let body = req.body;
-  body.remove((error, body) => {
-    if (error) {
-      return res.status(400).json({
-        error: error
-      });
-    }
-    res.json({
-      message: "Body deleted!"
-    });
-  });
 };
