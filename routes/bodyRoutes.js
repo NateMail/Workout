@@ -3,6 +3,8 @@ const {
   createBody,
   bodyById,
   updateBody,
+  isCreator,
+  singleBody,
   isOwner,
   userBody
 } = require("../controllers/body");
@@ -24,8 +26,10 @@ router.post(
 // Show body
 router.get("/body/by/:userId", requireSignin, isOwner, userBody);
 
+router.get("/body/:bodyId", requireSignin, isCreator, singleBody);
+
 // Update body
-router.put("/body/:bodyId", requireSignin, isOwner, updateBody);
+router.put("/body/edit/:bodyId", requireSignin, isCreator, updateBody);
 
 router.param("userId", userById);
 router.param("bodyId", bodyById);

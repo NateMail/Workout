@@ -99,3 +99,18 @@ exports.userBody = (req, res) => {
       res.json({ body });
     });
 };
+
+exports.singleBody = (req, res) => {
+  return res.json(req.body);
+};
+
+exports.isCreator = (req, res, next) => {
+  let isCreator = req.body && req.auth && req.body.addedBy._id == req.auth._id;
+
+  if (!isCreator) {
+    return res.status(403).json({
+      error: "User is not authorized"
+    });
+  }
+  next();
+};

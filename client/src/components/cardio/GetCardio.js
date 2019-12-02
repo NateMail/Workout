@@ -58,8 +58,13 @@ class GetCardio extends Component {
             <div key={idx}>
               <Card style={{ width: "18rem" }}>
                 <Card.Body>
-                  <Card.Title>{c.workoutName}</Card.Title>
-                  <ListGroup className="list-group-flush">
+                  <Card.Title style={{ textAlign: "center" }}>
+                    {c.workoutName}
+                  </Card.Title>
+                  <ListGroup
+                    className="list-group-flush"
+                    style={{ textAlign: "center" }}
+                  >
                     <ListGroupItem>Time: {c.time} minutes</ListGroupItem>
                     <ListGroupItem>Distance: {c.distance} miles</ListGroupItem>
                     <ListGroupItem>

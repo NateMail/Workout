@@ -27,3 +27,31 @@ export const getBody = (userId, token) => {
     })
     .catch(err => console.log(err));
 };
+
+export const update = (bodyId, token, body) => {
+  return fetch(`http://localhost:8181/body/edit/${bodyId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: body
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};
+
+export const singleBody = (bodyId, token) => {
+  return fetch(`http://localhost:8181/body/${bodyId}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      return response.json();
+    })
+    .catch(error => console.log(error));
+};

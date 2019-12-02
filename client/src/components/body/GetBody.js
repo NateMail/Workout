@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getBody } from "./apiBody";
@@ -94,6 +94,11 @@ class GetBody extends Component {
                       <hr />
                       {b.lose} calories a day
                     </ListGroupItem>
+                    {
+                      <ListGroupItem>
+                        <Link to={`/body/${b._id}`}>Edit Body</Link>
+                      </ListGroupItem>
+                    }
                   </ListGroup>
                 </Card.Body>
               </Card>

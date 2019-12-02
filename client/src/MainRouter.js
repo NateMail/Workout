@@ -7,6 +7,8 @@ import Signup from "./components/user/SignUp";
 import Signin from "./components/user/SignIn";
 import NewBody from "./components/body/NewBody";
 import GetBody from "./components/body/GetBody";
+import SingleBody from "./components/body/SingleBody";
+import EditBody from "./components/body/EditBody";
 import NewCardio from "./components/cardio/NewCardio";
 import GetCardio from "./components/cardio/GetCardio";
 import SingleCardio from "./components/cardio/SingleCardio";
@@ -25,6 +27,8 @@ const MainRouter = () => (
       <Route exact path="/signin" component={Signin} />
       <PrivateRoute exact path="/body/new/:userId" component={NewBody} />
       <PrivateRoute exact path="/body/by/:userId" component={GetBody} />
+      <PrivateRoute exact path="/body/:bodyId" component={SingleBody} />
+      <PrivateRoute exact path="/body/edit/:bodyId" component={EditBody} />
       <PrivateRoute exact path="/cardio/new/:userId" component={NewCardio} />
       <PrivateRoute exact path="/cardio/by/:userId" component={GetCardio} />
       <PrivateRoute exact path="/lift/new/:userId" component={NewLift} />
