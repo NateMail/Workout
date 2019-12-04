@@ -55,7 +55,9 @@ class SingleCardio extends Component {
         <ul>
           <li className="card-text">Time: {cardio.time} minutes</li>
           <li className="card-text">Distance: {cardio.distance} miles</li>
-          <li className="card-text">Pace: {cardio.pace} minutes per mile</li>
+          <li className="card-text">
+            Pace: {cardio.pace.toFixed(1)} minutes per mile
+          </li>
         </ul>
         <br />
 

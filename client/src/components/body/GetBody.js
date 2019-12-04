@@ -88,17 +88,19 @@ class GetBody extends Component {
                       {b.lose} calories a day
                     </ListGroupItem>
                     <ListGroupItem>
-                      Macros for Losing around pound a Week:
+                      Losing around pound a Week Macros:
                       <hr />
                       Protein: {b.weight[b.weight.length - 1]}g
                       <hr />
                       Fats: {b.weight[b.weight.length - 1] * 0.5}g
                       <hr />
                       Carbs:{" "}
-                      {(b.lose -
-                        b.weight[b.weight.length - 1] * 4 -
-                        b.weight[b.weight.length - 1] * 0.5 * 9) /
-                        4}
+                      {(
+                        (b.lose -
+                          b.weight[b.weight.length - 1] * 4 -
+                          b.weight[b.weight.length - 1] * 0.5 * 9) /
+                        4
+                      ).toFixed(0)}
                       g
                     </ListGroupItem>
                     <ListGroupItem>

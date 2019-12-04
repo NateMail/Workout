@@ -68,7 +68,7 @@ class GetCardio extends Component {
                     <ListGroupItem>Time: {c.time} minutes</ListGroupItem>
                     <ListGroupItem>Distance: {c.distance} miles</ListGroupItem>
                     <ListGroupItem>
-                      Pace: 1 mile every {c.pace} minutes
+                      Pace: 1 mile every {c.pace.toFixed(1)} minutes
                     </ListGroupItem>
                     <ListGroupItem>
                       Date: {new Date(c.created).toDateString()}
