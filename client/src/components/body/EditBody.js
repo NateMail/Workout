@@ -57,7 +57,6 @@ class EditBody extends Component {
   };
 
   handleChange = name => event => {
-    console.log(this.state);
     this.setState({ error: "" });
     const value = event.target.value;
     this.bodyData.set(name, value);

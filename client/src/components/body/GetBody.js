@@ -68,9 +68,8 @@ class GetBody extends Component {
                 <Card.Body>
                   <Card.Title>{b.addedBy.name}</Card.Title>
                   <Card.Text>
-                    BMR is the base metabolic rate. Which is the bare minimum to
-                    sustain life and ensure longevity. TDEE is an estimate of
-                    your daily calorie requirements.
+                    TDEE is an estimate of your daily calorie requirements to
+                    maintain your current weight.
                   </Card.Text>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem>
@@ -82,7 +81,6 @@ class GetBody extends Component {
                     <ListGroupItem>Height: {b.height} inches</ListGroupItem>
                     <ListGroupItem>Age: {b.age}</ListGroupItem>
                     <ListGroupItem>Sex: {b.sex}</ListGroupItem>
-                    <ListGroupItem>BMR: {b.bmr} calories</ListGroupItem>
                     <ListGroupItem>TDEE: {b.tdee} calories</ListGroupItem>
                     <ListGroupItem>
                       Lose around one pound a week:
