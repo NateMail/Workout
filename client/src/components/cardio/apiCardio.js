@@ -42,7 +42,7 @@ export const singleCardio = (cardioId, token) => {
 };
 
 export const remove = (cardioId, token) => {
-  return fetch(`http://localhost:8181/cardio/${cardioId}`, {
+  return fetch(`http://localhost:8181/cardio/remove/${cardioId}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",

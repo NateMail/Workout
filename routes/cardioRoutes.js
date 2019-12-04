@@ -33,7 +33,12 @@ router.get("/cardio/:cardioId", requireSignin, isCreator, singleCardio);
 router.put("/cardio/edit/:cardioId", requireSignin, isCreator, updateCardio);
 
 // Delete a cardio
-router.delete("/cardio/:cardioId", requireSignin, isCreator, deleteCardio);
+router.delete(
+  "/cardio/remove/:cardioId",
+  requireSignin,
+  isCreator,
+  deleteCardio
+);
 
 router.param("userId", userById);
 router.param("cardioId", cardioById);

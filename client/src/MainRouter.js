@@ -13,6 +13,7 @@ import NewCardio from "./components/cardio/NewCardio";
 import GetCardio from "./components/cardio/GetCardio";
 import SingleCardio from "./components/cardio/SingleCardio";
 import EditCardio from "./components/cardio/EditCardio";
+import DeleteCardio from "./components/cardio/DeleteCardio";
 import NewLift from "./components/lift/NewLift";
 import GetLift from "./components/lift/GetLift";
 import SingleLift from "./components/lift/SingleLift";
@@ -37,6 +38,7 @@ const MainRouter = () => (
       <Route exact path="/lift/:liftId" component={SingleLift} />
       <Route exact path="/cardio/:cardioId" component={SingleCardio} />
       <Route exact path="/cardio/edit/:cardioId" component={EditCardio} />
+      <Route exact path="/cardio/remove/:cardioId" component={DeleteCardio} />
       <Route exact path="/lift/edit/:liftId" component={EditLift} />
       <PrivateRoute exact path="/lift/remove/:liftId" component={DeleteLift} />
     </Switch>

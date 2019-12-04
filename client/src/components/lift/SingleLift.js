@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { singleLift, remove } from "./apiLift";
+import { singleLift } from "./apiLift";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 

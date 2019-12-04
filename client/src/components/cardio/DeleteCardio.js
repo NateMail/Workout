@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { singleCardio } from "./apiCardio";
+import { singleCardio, remove } from "./apiCardio";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 
-class SingleCardio extends Component {
+class DeleteCardio extends Component {
   state = {
     cardio: "",
     redirectToHome: false,
@@ -14,7 +14,9 @@ class SingleCardio extends Component {
     const cardioId = this.props.match.params.cardioId;
     const token = isAuthenticated().token;
     if (!token) {
-      this.setState({ redirectToSignIn: true });
+      this.setState({
+        redirectToSignIn: true
+      });
     } else {
       singleCardio(cardioId, token).then(data => {
         if (data.error) {
@@ -28,14 +30,27 @@ class SingleCardio extends Component {
     }
   };
 
+  deleteCardio = () => {
+    const cardioId = this.props.match.params.cardioId;
+    const token = isAuthenticated().token;
+    remove(cardioId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({ redirectToHome: true });
+      }
+    });
+  };
+
   renderCardio = cardio => {
     return (
       <div className="card-body">
         <ul>
-          <li className="card-text">Time: {cardio.time} minutes</li>
-          <li className="card-text">Distance: {cardio.distance} miles</li>
+          <li className="card-text">Time: {cardio.time}</li>
+          <li className="card-text">{cardio.distance} Miles</li>
+          <li className="card-text">{cardio.pace} pace</li>
           <li className="card-text">
-            Pace: {cardio.pace.toFixed(1)} minutes per mile
+            {new Date(cardio.created).toDateString()}
           </li>
         </ul>
         <br />
@@ -44,25 +59,17 @@ class SingleCardio extends Component {
           {isAuthenticated().user &&
             isAuthenticated().user._id === cardio.addedBy && (
               <>
-                {
-                  <Link
-                    to={`/cardio/edit/${cardio._id}`}
-                    className="btn btn-raised btn-warning mr-5"
-                  >
-                    Update Workout
-                  </Link>
-                }
-                <Link
-                  to={`/cardio/remove/${cardio._id}`}
+                <button
                   className="btn btn-raised btn-danger"
+                  onClick={this.deleteCardio}
                 >
                   Delete Workout
-                </Link>
+                </button>
               </>
             )}
           <Link
             to={`/cardio/by/${cardio.addedBy}`}
-            className="btn btn-raised btn-primary mr-5"
+            className="btn btn-raised btn-primary ml-5"
           >
             Back to Cardio's
           </Link>
@@ -94,4 +101,4 @@ class SingleCardio extends Component {
   }
 }
 
-export default SingleCardio;
+export default DeleteCardio;
