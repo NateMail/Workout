@@ -33,7 +33,7 @@ router.get("/lift/:liftId", requireSignin, isCreator, singleLift);
 router.put("/lift/edit/:liftId", requireSignin, isCreator, updateLift);
 
 // Delete a lift
-router.delete("/lift/:liftId", requireSignin, isCreator, deleteLift);
+router.delete("/lift/remove/:liftId", requireSignin, isCreator, deleteLift);
 
 router.param("userId", userById);
 router.param("liftId", liftById);

@@ -43,7 +43,7 @@ export const singleLift = (liftId, token) => {
 };
 
 export const remove = (liftId, token) => {
-  return fetch(`http://localhost:8181/lift/${liftId}`, {
+  return fetch(`http://localhost:8181/lift/remove/${liftId}`, {
     method: "DELETE",
     headers: {
       Accept: "application/json",

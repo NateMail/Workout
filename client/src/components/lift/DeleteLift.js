@@ -3,7 +3,7 @@ import { singleLift, remove } from "./apiLift";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
 
-class SingleLift extends Component {
+class DeleteLift extends Component {
   state = {
     lift: "",
     redirectToHome: false,
@@ -30,6 +30,18 @@ class SingleLift extends Component {
     }
   };
 
+  deleteLift = () => {
+    const liftId = this.props.match.params.liftId;
+    const token = isAuthenticated().token;
+    remove(liftId, token).then(data => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        this.setState({ redirectToHome: true });
+      }
+    });
+  };
+
   renderLift = lift => {
     return (
       <div className="card-body">
@@ -45,25 +57,17 @@ class SingleLift extends Component {
           {isAuthenticated().user &&
             isAuthenticated().user._id === lift.addedBy && (
               <>
-                {
-                  <Link
-                    to={`/lift/edit/${lift._id}`}
-                    className="btn btn-raised btn-info mr-5"
-                  >
-                    Update Workout
-                  </Link>
-                }
-                <Link
-                  to={`/lift/remove/${lift._id}`}
+                <button
                   className="btn btn-raised btn-danger"
+                  onClick={this.deleteLift}
                 >
                   Delete Workout
-                </Link>
+                </button>
               </>
             )}
           <Link
             to={`/lift/by/${lift.addedBy}`}
-            className="btn btn-raised btn-primary mr-5"
+            className="btn btn-raised btn-primary ml-5"
           >
             Back to Lift's
           </Link>
@@ -95,4 +99,4 @@ class SingleLift extends Component {
   }
 }
 
-export default SingleLift;
+export default DeleteLift;
