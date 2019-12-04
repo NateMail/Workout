@@ -39,7 +39,6 @@ class NewCardio extends Component {
   };
 
   handleChange = name => event => {
-    console.log(this.state);
     this.setState({ error: "" });
     const value = event.target.value;
     this.userCardioData.set(name, value);
