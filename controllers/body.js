@@ -71,7 +71,6 @@ exports.updateBody = (req, res, next) => {
       });
     }
     let body = req.body;
-    console.log(body);
     body = _.extend(body, fields);
     body.updated = Date.now();
     if (body.weightToPush > 0) {
