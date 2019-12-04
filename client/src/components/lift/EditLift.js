@@ -164,9 +164,6 @@ class EditLift extends Component {
           ""
         )}
 
-        {isAuthenticated().user.role === "admin" &&
-          this.editCardioForm(workoutName, weight, reps, sets)}
-
         {isAuthenticated().user._id === id &&
           this.editCardioForm(workoutName, weight, reps, sets)}
       </div>

@@ -152,9 +152,6 @@ class EditCardio extends Component {
           ""
         )}
 
-        {isAuthenticated().user.role === "admin" &&
-          this.editCardioForm(workoutName, time, distance)}
-
         {isAuthenticated().user._id === id &&
           this.editCardioForm(workoutName, time, distance)}
       </div>
