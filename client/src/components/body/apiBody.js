@@ -28,14 +28,14 @@ export const getBody = (userId, token) => {
     .catch(err => console.log(err));
 };
 
-export const update = (bodyId, token, body) => {
+export const update = (bodyId, token, bodys) => {
   return fetch(`http://localhost:8181/body/edit/${bodyId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
       Authorization: `Bearer ${token}`
     },
-    body: body
+    body: bodys
   })
     .then(response => {
       return response.json();

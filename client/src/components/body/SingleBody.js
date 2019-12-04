@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { singleBody } from "./apiBody";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class SingleBody extends Component {
   state = {
@@ -33,9 +34,12 @@ class SingleBody extends Component {
     return (
       <div className="card-body">
         <ul>
-          <li className="card-text">{body.weight[body.weight.length - 1]}</li>
-          <li className="card-text">{body.height}</li>
-          <li className="card-text">{body.sex}</li>
+          <li className="card-text">
+            {" "}
+            Last Recorded Weight: {body.weight[body.weight.length - 1]}
+          </li>
+          <li className="card-text">Height in Inches: {body.height}</li>
+          <li className="card-text"> Sex: {body.sex}</li>
           <li className="card-text">{body.activity}</li>
         </ul>
         <br />
