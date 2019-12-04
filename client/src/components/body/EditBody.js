@@ -111,7 +111,7 @@ class EditBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">New weight</label>
+        <label className="text-muted">Current weight in pounds</label>
         <input
           onChange={this.handleChange("weightToPush")}
           type="number"
