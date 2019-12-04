@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getBody } from "./apiBody";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Button } from "react-bootstrap";
 
 class GetBody extends Component {
   constructor() {
@@ -96,7 +96,9 @@ class GetBody extends Component {
                     </ListGroupItem>
                     {
                       <ListGroupItem>
-                        <Link to={`/body/${b._id}`}>Edit Body</Link>
+                        <Button>
+                          <Link to={`/body/edit/${b._id}`}>Edit Body</Link>
+                        </Button>
                       </ListGroupItem>
                     }
                   </ListGroup>
