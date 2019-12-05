@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { singleCardio, update } from "./apiCardio";
 import { isAuthenticated } from "../auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class EditCardio extends Component {
   constructor() {
@@ -154,6 +154,14 @@ class EditCardio extends Component {
 
         {isAuthenticated().user._id === id &&
           this.editCardioForm(workoutName, time, distance)}
+
+        <Link
+          className="btn btn-raised btn-sm btn-info"
+          style={{ margin: "5px" }}
+          to={`/cardio/by/${id}`}
+        >
+          Back to Cardios
+        </Link>
       </div>
     );
   }

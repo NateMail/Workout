@@ -168,11 +168,11 @@ class EditLift extends Component {
           this.editCardioForm(workoutName, weight, reps, sets)}
 
         <Link
-          className="btn btn-raised btn-info"
+          className="btn btn-raised btn-sm btn-info"
           style={{ margin: "5px" }}
           to={`/lift/by/${id}`}
         >
-          Back
+          Back to Lifts
         </Link>
       </div>
     );
