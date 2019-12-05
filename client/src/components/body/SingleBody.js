@@ -106,3 +106,56 @@
 // }
 
 // export default SingleBody;
+
+// <Card style={{ width: "100%" }}>
+//  <Card.Body>
+//    <Card.Title>{b.addedBy.name}</Card.Title>
+//    <ListGroup className="list-group-flush">
+//      <ListGroupItem>Starting Weight: {b.weight[0]} pounds</ListGroupItem>
+//      <ListGroupItem>
+//        Current Weight: {b.weight[b.weight.length - 1]} pounds
+//      </ListGroupItem>
+//      <ListGroupItem>Height: {b.height} inches</ListGroupItem>
+//      <ListGroupItem>Age: {b.age}</ListGroupItem>
+//      <ListGroupItem>Sex: {b.sex}</ListGroupItem>
+//      <Card.Text>
+//        TDEE is an estimate of your daily calorie requirements to maintain your
+//        current weight.
+//      </Card.Text>
+//      <ListGroupItem>TDEE: {b.tdee} calories</ListGroupItem>
+//      <ListGroupItem>
+//        Lose around one pound a week:
+//        <hr />
+//        {b.lose} calories a day
+//      </ListGroupItem>
+//      <ListGroupItem>
+//        Losing around pound a Week Macros:
+//        <hr />
+//        Protein: {b.weight[b.weight.length - 1]}g
+//        <hr />
+//        Fats: {b.weight[b.weight.length - 1] * 0.5}g
+//        <hr />
+//        Carbs:{" "}
+//        {(
+//          (b.lose -
+//            b.weight[b.weight.length - 1] * 4 -
+//            b.weight[b.weight.length - 1] * 0.5 * 9) /
+//          4
+//        ).toFixed(0)}
+//        g
+//      </ListGroupItem>
+//      <ListGroupItem>
+//        Gain around one pound a week:
+//        <hr />
+//        {parseInt(b.tdee) + 250} calories a day
+//      </ListGroupItem>
+//      {
+//        <ListGroupItem>
+//          <Link className="btn btn-raised btn-info" to={`/body/edit/${b._id}`}>
+//            Edit Body
+//          </Link>
+//        </ListGroupItem>
+//      }
+//    </ListGroup>
+//  </Card.Body>
+// </Card>;

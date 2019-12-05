@@ -49,10 +49,15 @@ class GetLift extends Component {
     return lifts.map(function(l, idx) {
       return (
         <div key={idx} name={l.workoutName}>
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ width: "15rem" }}>
             <Card.Body>
-              <Card.Title>{l.workoutName}</Card.Title>
-              <ListGroup className="list-group-flush">
+              <Card.Title style={{ textAlign: "center" }}>
+                {l.workoutName}
+              </Card.Title>
+              <ListGroup
+                className="list-group-flush"
+                style={{ textAlign: "center" }}
+              >
                 <ListGroupItem>{l.weight} lbs</ListGroupItem>
                 <ListGroupItem>Reps: {l.reps} </ListGroupItem>
                 <ListGroupItem>Sets: {l.sets}</ListGroupItem>

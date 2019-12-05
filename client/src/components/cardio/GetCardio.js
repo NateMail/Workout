@@ -49,7 +49,7 @@ class GetCardio extends Component {
     return cardios.map(function(c, idx) {
       return (
         <div key={idx}>
-          <Card style={{ width: "18rem" }}>
+          <Card style={{ width: "15rem" }}>
             <Card.Body>
               <Card.Title style={{ textAlign: "center" }}>
                 {c.workoutName}
