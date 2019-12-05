@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getLift } from "./apiLift";
-import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 
 class GetLift extends Component {
   constructor() {
@@ -76,7 +76,7 @@ class GetLift extends Component {
 
     if (redirectToCreateLift) return <Redirect to="/lift/new/:userId" />;
 
-    return <div>{this.cards(lifts)}</div>;
+    return <Row>{this.cards(lifts)}</Row>;
   }
 }
 
