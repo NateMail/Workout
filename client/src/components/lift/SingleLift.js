@@ -65,7 +65,7 @@ class SingleLift extends Component {
             )}
           <Link
             to={`/lift/by/${lift.addedBy}`}
-            className="btn btn-raised btn-primary"
+            className="btn btn-raised btn-success"
             style={{ margin: "5px" }}
           >
             Back to Lift's

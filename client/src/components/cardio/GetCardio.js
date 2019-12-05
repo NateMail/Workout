@@ -67,7 +67,12 @@ class GetCardio extends Component {
                   Date: {new Date(c.created).toDateString()}
                 </ListGroupItem>
                 <ListGroupItem>
-                  <Link to={`/cardio/${c._id}`}>Edit/Delete</Link>
+                  <Link
+                    className="btn btn-raised btn-info"
+                    to={`/cardio/${c._id}`}
+                  >
+                    Edit/Delete
+                  </Link>
                 </ListGroupItem>
               </ListGroup>
             </Card.Body>

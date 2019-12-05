@@ -67,7 +67,7 @@ class DeleteLift extends Component {
             )}
           <Link
             to={`/lift/by/${lift.addedBy}`}
-            className="btn btn-raised btn-primary ml-5"
+            className="btn btn-raised btn-success ml-5"
           >
             Back to Lift's
           </Link>

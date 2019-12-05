@@ -60,7 +60,12 @@ class GetLift extends Component {
                   Date: {new Date(l.created).toDateString()}
                 </ListGroupItem>
                 <ListGroupItem>
-                  <Link to={`/lift/${l._id}`}>Edit/Delete</Link>
+                  <Link
+                    className="btn btn-raised btn-info"
+                    to={`/lift/${l._id}`}
+                  >
+                    Edit/Delete
+                  </Link>
                 </ListGroupItem>
               </ListGroup>
             </Card.Body>

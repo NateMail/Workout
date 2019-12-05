@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { singleLift, update } from "./apiLift";
 import { isAuthenticated } from "../auth";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 
 class EditLift extends Component {
   constructor() {
@@ -166,6 +166,14 @@ class EditLift extends Component {
 
         {isAuthenticated().user._id === id &&
           this.editCardioForm(workoutName, weight, reps, sets)}
+
+        <Link
+          className="btn btn-raised btn-info"
+          style={{ margin: "5px" }}
+          to={`/lift/by/${id}`}
+        >
+          Back
+        </Link>
       </div>
     );
   }

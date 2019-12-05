@@ -75,6 +75,7 @@ class NewCardio extends Component {
         <label className="text-muted">Workout Name</label>
         <input
           onChange={this.handleChange("workoutName")}
+          placeholder="Workout"
           type="text"
           className="form-control"
           value={workoutName}
