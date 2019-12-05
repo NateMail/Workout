@@ -47,7 +47,8 @@ class SingleCardio extends Component {
                 {
                   <Link
                     to={`/cardio/edit/${cardio._id}`}
-                    className="btn btn-raised btn-warning mr-5"
+                    className="btn btn-raised btn-info"
+                    style={{ margin: "5px" }}
                   >
                     Update Workout
                   </Link>
@@ -55,6 +56,7 @@ class SingleCardio extends Component {
                 <Link
                   to={`/cardio/remove/${cardio._id}`}
                   className="btn btn-raised btn-danger"
+                  style={{ margin: "5px" }}
                 >
                   Delete Workout
                 </Link>
@@ -62,7 +64,8 @@ class SingleCardio extends Component {
             )}
           <Link
             to={`/cardio/by/${cardio.addedBy}`}
-            className="btn btn-raised btn-primary mr-5"
+            className="btn btn-raised btn-primary"
+            style={{ margin: "5px" }}
           >
             Back to Cardio's
           </Link>

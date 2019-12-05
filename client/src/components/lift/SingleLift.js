@@ -48,7 +48,8 @@ class SingleLift extends Component {
                 {
                   <Link
                     to={`/lift/edit/${lift._id}`}
-                    className="btn btn-raised btn-info mr-5"
+                    className="btn btn-raised btn-info"
+                    style={{ margin: "5px" }}
                   >
                     Update Workout
                   </Link>
@@ -56,6 +57,7 @@ class SingleLift extends Component {
                 <Link
                   to={`/lift/remove/${lift._id}`}
                   className="btn btn-raised btn-danger"
+                  style={{ margin: "5px" }}
                 >
                   Delete Workout
                 </Link>
@@ -63,7 +65,8 @@ class SingleLift extends Component {
             )}
           <Link
             to={`/lift/by/${lift.addedBy}`}
-            className="btn btn-raised btn-primary mr-5"
+            className="btn btn-raised btn-primary"
+            style={{ margin: "5px" }}
           >
             Back to Lift's
           </Link>
