@@ -45,38 +45,38 @@ class GetLift extends Component {
     this.init(userId);
   }
 
+  cards = lifts => {
+    return lifts.map(function(l, idx) {
+      return (
+        <div key={idx} name={l.workoutName}>
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title>{l.workoutName}</Card.Title>
+              <ListGroup className="list-group-flush">
+                <ListGroupItem>{l.weight} lbs</ListGroupItem>
+                <ListGroupItem>Reps: {l.reps} </ListGroupItem>
+                <ListGroupItem>Sets: {l.sets}</ListGroupItem>
+                <ListGroupItem>
+                  Date: {new Date(l.created).toDateString()}
+                </ListGroupItem>
+                <ListGroupItem>
+                  <Link to={`/lift/${l._id}`}>Edit/Delete</Link>
+                </ListGroupItem>
+              </ListGroup>
+            </Card.Body>
+          </Card>
+        </div>
+      );
+    });
+  };
+
   render() {
     const { redirectToSignin, redirectToCreateLift, lifts } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
 
     if (redirectToCreateLift) return <Redirect to="/lift/new/:userId" />;
 
-    return (
-      <div>
-        {lifts.map(function(l, idx) {
-          return (
-            <div key={idx}>
-              <Card style={{ width: "18rem" }}>
-                <Card.Body>
-                  <Card.Title>{l.workoutName}</Card.Title>
-                  <ListGroup className="list-group-flush">
-                    <ListGroupItem>{l.weight} lbs</ListGroupItem>
-                    <ListGroupItem>Reps: {l.reps} </ListGroupItem>
-                    <ListGroupItem>Sets: {l.sets}</ListGroupItem>
-                    <ListGroupItem>
-                      Date: {new Date(l.created).toDateString()}
-                    </ListGroupItem>
-                    <ListGroupItem>
-                      <Link to={`/lift/${l._id}`}>Edit/Delete</Link>
-                    </ListGroupItem>
-                  </ListGroup>
-                </Card.Body>
-              </Card>
-            </div>
-          );
-        })}
-      </div>
-    );
+    return <div>{this.cards(lifts)}</div>;
   }
 }
 
