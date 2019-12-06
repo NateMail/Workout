@@ -63,6 +63,9 @@ class GetBody extends Component {
         bod.tdee = bod.tdee.toFixed(2);
         bod.bmr = bod.bmr.toFixed(2);
         bod.lose = (bod.tdee - bod.tdee * 0.2).toFixed(2);
+        bod.protein = bod.weight[bod.weight.length - 1];
+        bod.fats = bod.protein * 0.5;
+        bod.carbs = bod.protein * 4 + bod.fats * 9;
       });
     }
 
@@ -83,17 +86,11 @@ class GetBody extends Component {
                 <li>
                   Losing around pound a Week Macros:
                   <hr />
-                  Protein: {b.weight[b.weight.length - 1]}g
+                  Protein: {b.protein}g
                   <hr />
-                  Fats: {b.weight[b.weight.length - 1] * 0.5}g
+                  Fats: {b.fats}g
                   <hr />
-                  Carbs:{" "}
-                  {(
-                    (b.lose -
-                      b.weight[b.weight.length - 1] * 4 -
-                      b.weight[b.weight.length - 1] * 0.5 * 9) /
-                    4
-                  ).toFixed(0)}
+                  Carbs: {(Math.abs(b.lose - b.carbs) / 4).toFixed(0)}
                   g
                   <hr />
                 </li>

@@ -18,13 +18,13 @@ const Home = ({ history }) => (
           {`${isAuthenticated().user.name}'s Body`}
         </Link>
         <Link
-          to={`/cardio/by/${isAuthenticated().user._id}`}
+          to={`/cardio/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
           {`${isAuthenticated().user.name}'s Cardio`}
         </Link>
         <Link
-          to={`/lift/by/${isAuthenticated().user._id}`}
+          to={`/lift/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
           {`${isAuthenticated().user.name}'s Lifts`}

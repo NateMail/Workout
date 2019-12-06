@@ -43,26 +43,38 @@ const Nav = ({ history }) => (
         <>
           <li className="nav-item">
             <Link
-              to={`/lift/new/${isAuthenticated().user._id}`}
+              to={`/body/by/${isAuthenticated().user._id}`}
               style={isActive(
                 history,
-                `/lift/new/${isAuthenticated().user._id}`
+                `/body/by/${isAuthenticated().user._id}`
               )}
               className="nav-link"
             >
-              Add Lift
+              My Body
             </Link>
           </li>
           <li className="nav-item">
             <Link
-              to={`/cardio/new/${isAuthenticated().user._id}`}
+              to={`/lift/by/${isAuthenticated().user._id}`}
               style={isActive(
                 history,
-                `/cardio/new/${isAuthenticated().user._id}`
+                `/lift/by/${isAuthenticated().user._id}`
               )}
               className="nav-link"
             >
-              Add Cardio
+              Lifts
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link
+              to={`/cardio/by/${isAuthenticated().user._id}`}
+              style={isActive(
+                history,
+                `/cardio/by/${isAuthenticated().user._id}`
+              )}
+              className="nav-link"
+            >
+              Cardio
             </Link>
           </li>
           <li className="nav-item">
