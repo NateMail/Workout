@@ -11,7 +11,8 @@ class GetCardio extends Component {
     this.state = {
       cardios: [],
       redirectToSignin: false,
-      redirectToCreateCardio: false
+      redirectToCreateCardio: false,
+      userId: ""
     };
   }
 
@@ -42,6 +43,7 @@ class GetCardio extends Component {
 
   componentDidMount() {
     const userId = this.props.match.params.userId;
+    this.setState({ userId: userId });
     this.init(userId);
   }
 
@@ -83,10 +85,16 @@ class GetCardio extends Component {
   };
 
   render() {
-    const { redirectToSignin, redirectToCreateCardio, cardios } = this.state;
+    const {
+      redirectToSignin,
+      redirectToCreateCardio,
+      cardios,
+      userId
+    } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
 
-    if (redirectToCreateCardio) return <Redirect to="/cardio/new/:userId" />;
+    if (redirectToCreateCardio)
+      return <Redirect to={`/cardio/new/${userId}`} />;
 
     return <Row>{this.cards(cardios)}</Row>;
   }

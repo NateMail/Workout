@@ -11,7 +11,8 @@ class GetBody extends Component {
     this.state = {
       bodys: [],
       redirectToSignin: false,
-      redirectToCreateBody: false
+      redirectToCreateBody: false,
+      userId: ""
     };
   }
 
@@ -42,14 +43,20 @@ class GetBody extends Component {
 
   componentDidMount() {
     const userId = this.props.match.params.userId;
+    this.setState({ userId: userId });
     this.init(userId);
   }
 
   render() {
-    const { redirectToSignin, redirectToCreateBody, bodys } = this.state;
+    const {
+      redirectToSignin,
+      redirectToCreateBody,
+      bodys,
+      userId
+    } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
 
-    if (redirectToCreateBody) return <Redirect to="/body/new/:userId" />;
+    if (redirectToCreateBody) return <Redirect to={`/body/new/${userId}`} />;
 
     if (bodys !== undefined && bodys.length !== 0) {
       bodys.forEach(bod => {

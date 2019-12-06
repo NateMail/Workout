@@ -11,7 +11,8 @@ class GetLift extends Component {
     this.state = {
       lifts: [],
       redirectToSignin: false,
-      redirectToCreateLift: false
+      redirectToCreateLift: false,
+      userId: ""
     };
   }
 
@@ -42,6 +43,7 @@ class GetLift extends Component {
 
   componentDidMount() {
     const userId = this.props.match.params.userId;
+    this.setState({ userId: userId });
     this.init(userId);
   }
 
@@ -81,10 +83,15 @@ class GetLift extends Component {
   };
 
   render() {
-    const { redirectToSignin, redirectToCreateLift, lifts } = this.state;
+    const {
+      redirectToSignin,
+      redirectToCreateLift,
+      lifts,
+      userId
+    } = this.state;
     if (redirectToSignin) return <Redirect to="/signin" />;
 
-    if (redirectToCreateLift) return <Redirect to="/lift/new/:userId" />;
+    if (redirectToCreateLift) return <Redirect to={`/lift/new/${userId}`} />;
 
     return <Row>{this.cards(lifts)}</Row>;
   }
