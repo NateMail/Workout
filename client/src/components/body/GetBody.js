@@ -109,10 +109,10 @@ class GetBody extends Component {
             </div>
           );
         })}
-        <Link to={`/cardio/by/${this.state.userId}`}>
+        <Link to={`/cardio/new/${this.state.userId}`}>
           <FontAwesomeIcon size="lg" icon={faRunning} />
         </Link>
-        <Link to={`/lift/by/${this.state.userId}`}>
+        <Link to={`/lift/new/${this.state.userId}`}>
           <FontAwesomeIcon size="lg" icon={faDumbbell} />
         </Link>
       </div>
