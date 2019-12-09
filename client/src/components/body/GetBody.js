@@ -3,7 +3,8 @@ import { Redirect, Link } from "react-router-dom";
 import { read } from "../user/apiUser";
 import { isAuthenticated } from "../auth";
 import { getBody } from "./apiBody";
-// import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRunning, faDumbbell } from "@fortawesome/free-solid-svg-icons";
 
 class GetBody extends Component {
   constructor() {
@@ -108,6 +109,8 @@ class GetBody extends Component {
             </div>
           );
         })}
+        <FontAwesomeIcon size="lg" icon={faRunning} />
+        <FontAwesomeIcon size="lg" icon={faDumbbell} />
       </div>
     );
   }
