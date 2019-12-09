@@ -129,7 +129,7 @@ class NewLift extends Component {
     } = this.state;
 
     if (redirectToProfile) {
-      return <Redirect to={`/user/${user._id}`} />;
+      return <Redirect to={`/lift/by/${user._id}`} />;
     }
 
     return (

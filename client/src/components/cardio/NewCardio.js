@@ -118,7 +118,7 @@ class NewCardio extends Component {
     } = this.state;
 
     if (redirectToProfile) {
-      return <Redirect to={`/user/${user._id}`} />;
+      return <Redirect to={`/cardio/by/${user._id}`} />;
     }
 
     return (

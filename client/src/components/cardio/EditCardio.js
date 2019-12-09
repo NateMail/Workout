@@ -130,7 +130,7 @@ class EditCardio extends Component {
     } = this.state;
 
     if (redirectToProfile) {
-      return <Redirect to={`/`} />;
+      return <Redirect to={`/cardio/by/${isAuthenticated().user._id}`} />;
     }
 
     return (

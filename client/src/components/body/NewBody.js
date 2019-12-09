@@ -221,7 +221,7 @@ class NewBody extends Component {
     } = this.state;
 
     if (redirectToProfile) {
-      return <Redirect to={`/user/${user._id}`} />;
+      return <Redirect to={`/body/by/${user._id}`} />;
     }
 
     return (

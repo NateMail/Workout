@@ -163,7 +163,7 @@ class EditBody extends Component {
     } = this.state;
 
     if (redirectToProfile) {
-      return <Redirect to={`/`} />;
+      return <Redirect to={`/body/by/${isAuthenticated().user._id}`} />;
     }
 
     return (
