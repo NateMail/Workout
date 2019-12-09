@@ -109,8 +109,12 @@ class GetBody extends Component {
             </div>
           );
         })}
-        <FontAwesomeIcon size="lg" icon={faRunning} />
-        <FontAwesomeIcon size="lg" icon={faDumbbell} />
+        <Link to={`/cardio/by/${this.state.userId}`}>
+          <FontAwesomeIcon size="lg" icon={faRunning} />
+        </Link>
+        <Link to={`/lift/by/${this.state.userId}`}>
+          <FontAwesomeIcon size="lg" icon={faDumbbell} />
+        </Link>
       </div>
     );
   }
