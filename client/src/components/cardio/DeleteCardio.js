@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { singleCardio, remove } from "./apiCardio";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class DeleteCardio extends Component {
   state = {
@@ -44,15 +45,21 @@ class DeleteCardio extends Component {
 
   renderCardio = cardio => {
     return (
-      <div className="card-body">
-        <ul>
-          <li className="card-text">Time: {cardio.time}</li>
-          <li className="card-text">{cardio.distance} Miles</li>
-          <li className="card-text">{cardio.pace} pace</li>
-          <li className="card-text">
+      <Card style={{ textAlign: "center" }} className="card-body">
+        <ListGroup>
+          <ListGroupItem className="card-text">
+            Time: {cardio.time}
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
+            {cardio.distance} Miles
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
+            {cardio.pace} pace
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
             {new Date(cardio.created).toDateString()}
-          </li>
-        </ul>
+          </ListGroupItem>
+        </ListGroup>
         <br />
 
         <div className="d-inline-block">
@@ -71,10 +78,10 @@ class DeleteCardio extends Component {
             to={`/cardio/by/${cardio.addedBy}`}
             className="btn btn-raised btn-primary ml-5"
           >
-            Back to Cardio's
+            Back to Cardio
           </Link>
         </div>
-      </div>
+      </Card>
     );
   };
 
@@ -87,8 +94,9 @@ class DeleteCardio extends Component {
       return <Redirect to={"/signin"} />;
     }
     return (
-      <div className="container">
+      <div style={{ textAlign: "center" }} className="container">
         <h2 className="display-2 mt-5 mb-5">{cardio.workoutName}</h2>
+        <h4>Are you sure you want to delete?</h4>
         {!cardio ? (
           <div className="jumbotron text-center">
             <h2>Loading...</h2>

@@ -112,7 +112,6 @@ class GetBody extends Component {
               <Table striped bordered hover variant="light">
                 <thead>
                   <tr>
-                    <th>Starting Weight</th>
                     <th>Current Weight</th>
                     <th>Height</th>
                     <th>Age</th>
@@ -122,7 +121,6 @@ class GetBody extends Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <th>{b.weight[0]} pounds</th>
                     <th>{b.weight[b.weight.length - 1]} pounds</th>
                     <th>{b.height} inches</th>
                     <th>{b.age} years old</th>
@@ -138,6 +136,14 @@ class GetBody extends Component {
                 is based on your weight, height, age, sex, and activity level.
                 As you lose weight or gain weight these numbers will change.
               </p>
+              <h4>Your starting weight was: {b.weight[0]} pounds</h4>
+              <h4>
+                Your current weight is: {b.weight[b.weight.length - 1]} pounds
+              </h4>
+              <h4>
+                For a differnce of:{" "}
+                {b.weight[b.weight.length - 1] - b.weight[0]} pounds
+              </h4>
               <Table striped bordered hover variant="light">
                 <thead>
                   <tr>

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { singleCardio } from "./apiCardio";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class SingleCardio extends Component {
   state = {
@@ -30,17 +31,24 @@ class SingleCardio extends Component {
 
   renderCardio = cardio => {
     return (
-      <div className="card-body">
-        <ul>
-          <li className="card-text">Time: {cardio.time} minutes</li>
-          <li className="card-text">Distance: {cardio.distance} miles</li>
-          <li className="card-text">
+      <Card style={{ textAlign: "center" }}>
+        <ListGroup>
+          <ListGroupItem className="card-text">
+            Time: {cardio.time} minutes
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
+            Distance: {cardio.distance} miles
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
             Pace: {cardio.pace.toFixed(1)} minutes per mile
-          </li>
-        </ul>
+          </ListGroupItem>
+          <ListGroupItem className="card-text">
+            Date: {new Date(cardio.created).toDateString()}
+          </ListGroupItem>
+        </ListGroup>
         <br />
 
-        <div className="d-inline-block">
+        <ListGroup className="d-inline-block">
           {isAuthenticated().user &&
             isAuthenticated().user._id === cardio.addedBy && (
               <>
@@ -67,10 +75,10 @@ class SingleCardio extends Component {
             className="btn btn-raised btn-primary"
             style={{ margin: "5px" }}
           >
-            Back to Cardio's
+            Back to Cardio
           </Link>
-        </div>
-      </div>
+        </ListGroup>
+      </Card>
     );
   };
 
@@ -83,7 +91,7 @@ class SingleCardio extends Component {
       return <Redirect to={"/signin"} />;
     }
     return (
-      <div className="container">
+      <div style={{ textAlign: "center" }} className="container">
         <h2 className="display-2 mt-5 mb-5">{cardio.workoutName}</h2>
         {!cardio ? (
           <div className="jumbotron text-center">

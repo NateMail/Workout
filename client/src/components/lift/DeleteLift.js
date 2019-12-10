@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { singleLift, remove } from "./apiLift";
 import { Link, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../auth";
+import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 class DeleteLift extends Component {
   state = {
@@ -44,13 +45,15 @@ class DeleteLift extends Component {
 
   renderLift = lift => {
     return (
-      <div className="card-body">
-        <ul>
-          <li className="card-text">{lift.weight} lbs</li>
-          <li className="card-text">{lift.reps} reps</li>
-          <li className="card-text">{lift.sets} sets</li>
-          <li className="card-text">{new Date(lift.created).toDateString()}</li>
-        </ul>
+      <Card>
+        <ListGroup>
+          <ListGroupItem className="card-text">{lift.weight} lbs</ListGroupItem>
+          <ListGroupItem className="card-text">{lift.reps} reps</ListGroupItem>
+          <ListGroupItem className="card-text">{lift.sets} sets</ListGroupItem>
+          <ListGroupItem className="card-text">
+            Date: {new Date(lift.created).toDateString()}
+          </ListGroupItem>
+        </ListGroup>
         <br />
 
         <div className="d-inline-block">
@@ -69,10 +72,10 @@ class DeleteLift extends Component {
             to={`/lift/by/${lift.addedBy}`}
             className="btn btn-raised btn-success ml-5"
           >
-            Back to Lift's
+            Back to Lift
           </Link>
         </div>
-      </div>
+      </Card>
     );
   };
 
@@ -85,7 +88,7 @@ class DeleteLift extends Component {
       return <Redirect to={"/signin"} />;
     }
     return (
-      <div className="container">
+      <div style={{ textAlign: "center" }} className="container">
         <h2 className="display-2 mt-5 mb-5">{lift.workoutName}</h2>
         <h4>Are you sure you want to delete?</h4>
         {!lift ? (
