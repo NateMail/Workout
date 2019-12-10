@@ -5,6 +5,7 @@ import { isAuthenticated } from "../auth";
 import { getBody } from "./apiBody";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRunning, faDumbbell } from "@fortawesome/free-solid-svg-icons";
+import { Table } from "react-bootstrap";
 
 class GetBody extends Component {
   constructor() {
@@ -61,18 +62,30 @@ class GetBody extends Component {
 
     if (bodys !== undefined && bodys.length !== 0) {
       bodys.forEach(bod => {
-        bod.tdee = bod.tdee.toFixed(2);
-        bod.bmr = bod.bmr.toFixed(2);
-        bod.lose = (bod.tdee - bod.tdee * 0.2).toFixed(2);
-        bod.protein = bod.weight[bod.weight.length - 1];
-        bod.fats = bod.protein * 0.5;
-        bod.carbs = bod.protein * 4 + bod.fats * 9;
+        bod.tdee = bod.tdee.toFixed(0);
+        bod.bmr = bod.bmr.toFixed(0);
+        bod.lose = (bod.tdee - bod.tdee * 0.2).toFixed(0);
+        bod.protein = ((bod.tdee * 0.3) / 4).toFixed(0);
+        bod.fats = ((bod.tdee * 0.3) / 9).toFixed(0);
+        bod.carbs = ((bod.tdee * 0.4) / 4).toFixed(0);
+        bod.gain = (parseInt(bod.tdee * 0.2) + parseInt(bod.tdee)).toFixed(0);
+        bod.loseProtein = ((bod.lose * 0.3) / 4).toFixed(0);
+        bod.loseFats = ((bod.lose * 0.3) / 9).toFixed(0);
+        bod.loseCarbs = ((bod.lose * 0.4) / 4).toFixed(0);
+        bod.gainProtein = ((bod.gain * 0.3) / 4).toFixed(0);
+        bod.gainFats = ((bod.gain * 0.3) / 9).toFixed(0);
+        bod.gainCarbs = ((bod.gain * 0.4) / 4).toFixed(0);
       });
     }
 
     return (
       <div>
-        <div style={{ position: "absolute", top: "15%", right: "5%" }}>
+        <div
+          style={{
+            position: "absolute",
+            right: "2%"
+          }}
+        >
           <Link
             to={`/cardio/new/${this.state.userId}`}
             style={{
@@ -96,32 +109,72 @@ class GetBody extends Component {
           return (
             <div key={idx}>
               <h1 style={{ textAlign: "center" }}>{b.addedBy.name}</h1>
-              <ul>
-                <li>Starting Weight: {b.weight[0]} pounds</li>
-                <li>Current Weight: {b.weight[b.weight.length - 1]} pounds</li>
-                <li>Height: {b.height} inches</li>
-                <li>Age: {b.age}</li>
-                <li>Sex: {b.sex}</li>
-                <li>TDEE: {b.tdee} calories</li>
-                <li>Lose around one pound a week: {b.lose} calories a day</li>
-                <li>
-                  Losing around pound a Week Macros:
-                  <hr />
-                  Protein: {b.protein}g
-                  <hr />
-                  Fats: {b.fats}g
-                  <hr />
-                  Carbs: {(Math.abs(b.lose - b.carbs) / 4).toFixed(0)}
-                  g
-                  <hr />
-                </li>
-                <li>
-                  Gain around one pound a week:
-                  {parseInt(b.tdee) + 250} calories a day
-                </li>
-              </ul>
+              <Table striped bordered hover variant="light">
+                <thead>
+                  <tr>
+                    <th>Starting Weight</th>
+                    <th>Current Weight</th>
+                    <th>Height</th>
+                    <th>Age</th>
+                    <th>Sex</th>
+                    <th>TDEE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>{b.weight[0]} pounds</th>
+                    <th>{b.weight[b.weight.length - 1]} pounds</th>
+                    <th>{b.height} inches</th>
+                    <th>{b.age} years old</th>
+                    <th>{b.sex}</th>
+                    <th>{b.tdee} calories</th>
+                  </tr>
+                </tbody>
+              </Table>
+              <p>
+                TDEE is your Total Daily Energy Expenditure. This is based off
+                your Base Metabolic Rate: {b.bmr} cals. This is the base number
+                at which your body uses energy when you are resting. All of this
+                is based on your weight, height, age, sex, and activity level.
+                This as you lose weight or gain weight these numbers will
+                change.
+              </p>
+              <Table striped bordered hover variant="light">
+                <thead>
+                  <tr>
+                    <th>Macros</th>
+                    <th>Calories</th>
+                    <th>Protein</th>
+                    <th>Fats</th>
+                    <th>Carbs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Losing 1 pound a week</td>
+                    <td>{b.lose} cals</td>
+                    <td>{b.loseProtein}g</td>
+                    <td>{b.loseFats}g</td>
+                    <td>{b.loseCarbs}g</td>
+                  </tr>
+                  <tr>
+                    <td>Maintain Current Weight</td>
+                    <td>{b.tdee} cals</td>
+                    <td>{b.protein}g</td>
+                    <td>{b.fats}g</td>
+                    <td>{b.carbs}g</td>
+                  </tr>
+                  <tr>
+                    <td>Gain Muscle</td>
+                    <td>{b.gain} cals</td>
+                    <td>{b.gainProtein}g</td>
+                    <td>{b.gainFats}g</td>
+                    <td>{b.gainCarbs}g</td>
+                  </tr>
+                </tbody>
+              </Table>
               <Link
-                className="btn btn-lg btn-raised btn-info"
+                className="btn btn-lg btn-raised btn-primary"
                 style={{ margin: "0px 40%" }}
                 to={`/body/edit/${b._id}`}
               >
