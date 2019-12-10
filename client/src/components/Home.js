@@ -21,13 +21,13 @@ const Home = ({ history }) => (
           to={`/cardio/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
-          {`${isAuthenticated().user.name}'s Cardio`}
+          Add Cardio
         </Link>
         <Link
           to={`/lift/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
-          {`${isAuthenticated().user.name}'s Lifts`}
+          Add Lift
         </Link>
       </>
     )}
