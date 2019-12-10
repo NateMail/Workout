@@ -35,11 +35,19 @@ const MainRouter = () => (
       <PrivateRoute exact path="/cardio/by/:userId" component={GetCardio} />
       <PrivateRoute exact path="/lift/new/:userId" component={NewLift} />
       <PrivateRoute exact path="/lift/by/:userId" component={GetLift} />
-      <Route exact path="/lift/:liftId" component={SingleLift} />
-      <Route exact path="/cardio/:cardioId" component={SingleCardio} />
-      <Route exact path="/cardio/edit/:cardioId" component={EditCardio} />
-      <Route exact path="/cardio/remove/:cardioId" component={DeleteCardio} />
-      <Route exact path="/lift/edit/:liftId" component={EditLift} />
+      <PrivateRoute exact path="/lift/:liftId" component={SingleLift} />
+      <PrivateRoute exact path="/cardio/:cardioId" component={SingleCardio} />
+      <PrivateRoute
+        exact
+        path="/cardio/edit/:cardioId"
+        component={EditCardio}
+      />
+      <PrivateRoute
+        exact
+        path="/cardio/remove/:cardioId"
+        component={DeleteCardio}
+      />
+      <PrivateRoute exact path="/lift/edit/:liftId" component={EditLift} />
       <PrivateRoute exact path="/lift/remove/:liftId" component={DeleteLift} />
     </Switch>
   </div>
