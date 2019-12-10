@@ -72,6 +72,26 @@ class GetBody extends Component {
 
     return (
       <div>
+        <div style={{ position: "absolute", top: "15%", right: "5%" }}>
+          <Link
+            to={`/cardio/new/${this.state.userId}`}
+            style={{
+              color: "green",
+              margin: "15px"
+            }}
+          >
+            <FontAwesomeIcon size="lg" icon={faRunning} />+
+          </Link>
+          <Link
+            to={`/lift/new/${this.state.userId}`}
+            style={{
+              color: "green",
+              margin: "15px"
+            }}
+          >
+            <FontAwesomeIcon size="lg" icon={faDumbbell} />+
+          </Link>
+        </div>
         {bodys.map(function(b, idx) {
           return (
             <div key={idx}>
@@ -101,7 +121,8 @@ class GetBody extends Component {
                 </li>
               </ul>
               <Link
-                className="btn btn-raised btn-info"
+                className="btn btn-lg btn-raised btn-info"
+                style={{ margin: "0px 40%" }}
                 to={`/body/edit/${b._id}`}
               >
                 Edit Body
@@ -109,12 +130,6 @@ class GetBody extends Component {
             </div>
           );
         })}
-        <Link to={`/cardio/new/${this.state.userId}`}>
-          <FontAwesomeIcon size="lg" icon={faRunning} />
-        </Link>
-        <Link to={`/lift/new/${this.state.userId}`}>
-          <FontAwesomeIcon size="lg" icon={faDumbbell} />
-        </Link>
       </div>
     );
   }
