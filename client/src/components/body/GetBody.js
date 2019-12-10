@@ -136,8 +136,7 @@ class GetBody extends Component {
                 your Base Metabolic Rate: {b.bmr} cals. This is the base number
                 at which your body uses energy when you are resting. All of this
                 is based on your weight, height, age, sex, and activity level.
-                This as you lose weight or gain weight these numbers will
-                change.
+                As you lose weight or gain weight these numbers will change.
               </p>
               <Table striped bordered hover variant="light">
                 <thead>
