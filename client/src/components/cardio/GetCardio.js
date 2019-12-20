@@ -50,7 +50,7 @@ class GetCardio extends Component {
   cards = cardios => {
     return cardios.map(function(c, idx) {
       return (
-        <div key={idx}>
+        <div key={idx} style={{ background: "#182B3E" }}>
           <Card style={{ width: "15rem" }}>
             <Card.Body>
               <Card.Title style={{ textAlign: "center" }}>
@@ -96,7 +96,13 @@ class GetCardio extends Component {
     if (redirectToCreateCardio)
       return <Redirect to={`/cardio/new/${userId}`} />;
 
-    return <Row>{this.cards(cardios)}</Row>;
+    return (
+      <div style={{ background: "#182B3E", height: "100vh" }}>
+        <div style={{ background: "#182B3E" }}>
+          <Row style={{ padding: "50px" }}>{this.cards(cardios)}</Row>
+        </div>
+      </div>
+    );
   }
 }
 

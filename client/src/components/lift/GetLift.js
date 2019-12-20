@@ -50,7 +50,7 @@ class GetLift extends Component {
   cards = lifts => {
     return lifts.map(function(l, idx) {
       return (
-        <div key={idx} name={l.workoutName}>
+        <div key={idx} name={l.workoutName} style={{ background: "#182B3E" }}>
           <Card style={{ width: "15rem" }}>
             <Card.Body>
               <Card.Title style={{ textAlign: "center" }}>
@@ -93,7 +93,13 @@ class GetLift extends Component {
 
     if (redirectToCreateLift) return <Redirect to={`/lift/new/${userId}`} />;
 
-    return <Row>{this.cards(lifts)}</Row>;
+    return (
+      <div style={{ background: "#182B3E", height: "100vh" }}>
+        <div style={{ background: "#182B3E" }}>
+          <Row style={{ padding: "50px" }}>{this.cards(lifts)}</Row>
+        </div>
+      </div>
+    );
   }
 }
 
