@@ -190,7 +190,7 @@ class GetBody extends Component {
             style={{
               color: "green",
               background: "black",
-              margin: "15px",
+              margin: "10px",
               border: "solid black 3px",
               borderRadius: "85%"
             }}
@@ -202,7 +202,7 @@ class GetBody extends Component {
             style={{
               color: "green",
               background: "black",
-              margin: "15px",
+              margin: "10px",
               border: "solid black 3px",
               borderRadius: "85%"
             }}

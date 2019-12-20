@@ -87,15 +87,19 @@ class SingleLift extends Component {
       return <Redirect to={"/signin"} />;
     }
     return (
-      <div style={{ textAlign: "center" }} className="container">
-        <h2 className="display-2 mt-5 mb-5">{lift.workoutName}</h2>
-        {!lift ? (
-          <div className="jumbotron text-center">
-            <h2>Loading...</h2>
-          </div>
-        ) : (
-          this.renderLift(lift)
-        )}
+      <div style={{ background: "#182B3E", height: "100vh" }}>
+        <div style={{ textAlign: "center" }} className="container">
+          <h2 className="display-2" style={{ color: "white" }}>
+            {lift.workoutName}
+          </h2>
+          {!lift ? (
+            <div className="jumbotron text-center">
+              <h2>Loading...</h2>
+            </div>
+          ) : (
+            this.renderLift(lift)
+          )}
+        </div>
       </div>
     );
   }
