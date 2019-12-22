@@ -171,7 +171,7 @@ class EditCardio extends Component {
             this.editCardioForm(workoutName, time, distance)}
 
           <Link
-            className="btn btn-raised btn-md btn-info"
+            className="btn btn-raised btn-md btn-success"
             style={{ margin: "5px" }}
             to={`/cardio/by/${id}`}
           >

@@ -159,7 +159,6 @@ class EditBody extends Component {
   render() {
     const {
       id,
-      name,
       age,
       activity,
       height,

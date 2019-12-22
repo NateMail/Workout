@@ -94,16 +94,26 @@ class DeleteCardio extends Component {
       return <Redirect to={"/signin"} />;
     }
     return (
-      <div style={{ textAlign: "center" }} className="container">
-        <h2 className="display-2 mt-5 mb-5">{cardio.workoutName}</h2>
-        <h4>Are you sure you want to delete?</h4>
-        {!cardio ? (
-          <div className="jumbotron text-center">
-            <h2>Loading...</h2>
-          </div>
-        ) : (
-          this.renderCardio(cardio)
-        )}
+      <div style={{ background: "#172B3E" }}>
+        <div
+          style={{
+            textAlign: "center",
+            background: "#172B3E",
+            height: "100vh",
+            width: "100vw"
+          }}
+          className="container"
+        >
+          <h2 style={{ color: "white" }}>{cardio.workoutName}</h2>
+          <h4 style={{ color: "white" }}>Are you sure you want to delete?</h4>
+          {!cardio ? (
+            <div className="jumbotron text-center">
+              <h2>Loading...</h2>
+            </div>
+          ) : (
+            this.renderCardio(cardio)
+          )}
+        </div>
       </div>
     );
   }

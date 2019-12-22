@@ -80,7 +80,7 @@ class GetBody extends Component {
 
     return (
       <div style={{ background: "#182B3E", color: "white" }}>
-        <div style={{ marginBottom: "100px" }}>
+        <div style={{ marginBottom: "20px" }}>
           {bodys.map(function(b, idx) {
             return (
               <div key={idx} style={{ background: "#182B3E" }}>
