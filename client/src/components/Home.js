@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../components/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faUser,
+  faRunning,
+  faDumbbell
+} from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ history }) => (
   <div>
@@ -15,19 +21,19 @@ const Home = ({ history }) => (
           to={`/body/by/${isAuthenticated().user._id}`}
           className="nav-link"
         >
-          {`${isAuthenticated().user.name}'s Body`}
+          <FontAwesomeIcon size="lg" icon={faUser} />
         </Link>
         <Link
           to={`/cardio/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
-          Add Cardio
+          <FontAwesomeIcon size="lg" icon={faRunning} />+
         </Link>
         <Link
           to={`/lift/new/${isAuthenticated().user._id}`}
           className="nav-link"
         >
-          Add Lift
+          <FontAwesomeIcon size="lg" icon={faDumbbell} />+
         </Link>
       </>
     )}
