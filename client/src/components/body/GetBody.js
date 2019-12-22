@@ -171,7 +171,11 @@ class GetBody extends Component {
                 </Table>
                 <Link
                   className="btn btn-lg btn-raised btn-primary"
-                  style={{ margin: "0px 40%" }}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                  }}
                   to={`/body/edit/${b._id}`}
                 >
                   Edit Body
@@ -188,24 +192,22 @@ class GetBody extends Component {
           <Link
             to={`/cardio/new/${this.state.userId}`}
             style={{
-              color: "green",
-              background: "black",
               margin: "10px",
               border: "solid black 3px",
               borderRadius: "85%"
             }}
+            className="btn btn-sm btn-raised btn-success"
           >
             <FontAwesomeIcon size="lg" icon={faRunning} />+
           </Link>
           <Link
             to={`/lift/new/${this.state.userId}`}
             style={{
-              color: "green",
-              background: "black",
               margin: "10px",
               border: "solid black 3px",
               borderRadius: "85%"
             }}
+            className="btn btn-sm btn-raised btn-success"
           >
             <FontAwesomeIcon size="lg" icon={faDumbbell} />+
           </Link>

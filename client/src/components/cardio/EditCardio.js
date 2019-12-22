@@ -81,38 +81,52 @@ class EditCardio extends Component {
   };
 
   editCardioForm = (workoutName, time, distance) => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">Workout Name</label>
+    <form
+      style={{
+        background: "#293B4D",
+        color: "white",
+        border: "5px black solid",
+        padding: "5px"
+      }}
+    >
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Workout Name</label>
         <input
           onChange={this.handleChange("workoutName")}
           type="text"
           className="form-control"
           value={workoutName}
+          style={{ textAlign: "center" }}
         />
       </div>
 
-      <div className="form-group">
-        <label className="text-muted">Time</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Time</label>
         <input
           onChange={this.handleChange("time")}
           type="number"
           className="form-control"
           value={time}
+          style={{ textAlign: "center" }}
         />
       </div>
 
-      <div className="form-group">
-        <label className="text-muted">Distance</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Distance</label>
         <input
           onChange={this.handleChange("distance")}
           type="number"
           className="form-control"
           value={distance}
+          style={{ textAlign: "center" }}
         />
       </div>
 
-      <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
+      <button
+        onClick={this.clickSubmit}
+        className="btn btn-raised btn-md btn-primary"
+        style={{ margin: "0px 45%" }}
+      >
         Update Workout
       </button>
     </form>
@@ -134,34 +148,36 @@ class EditCardio extends Component {
     }
 
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">{workoutName}</h2>
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <div className="container">
+          <h2 style={{ textAlign: "center", color: "white" }}>{workoutName}</h2>
 
-        <div
-          className="alert alert-danger"
-          style={{ display: error ? "" : "none" }}
-        >
-          {error}
-        </div>
-
-        {loading ? (
-          <div className="jumbotron text-center">
-            <h2>Loading...</h2>
+          <div
+            className="alert alert-danger"
+            style={{ display: error ? "" : "none" }}
+          >
+            {error}
           </div>
-        ) : (
-          ""
-        )}
 
-        {isAuthenticated().user._id === id &&
-          this.editCardioForm(workoutName, time, distance)}
+          {loading ? (
+            <div className="jumbotron text-center">
+              <h2>Loading...</h2>
+            </div>
+          ) : (
+            ""
+          )}
 
-        <Link
-          className="btn btn-raised btn-sm btn-info"
-          style={{ margin: "5px" }}
-          to={`/cardio/by/${id}`}
-        >
-          Back to Cardios
-        </Link>
+          {isAuthenticated().user._id === id &&
+            this.editCardioForm(workoutName, time, distance)}
+
+          <Link
+            className="btn btn-raised btn-md btn-info"
+            style={{ margin: "5px" }}
+            to={`/cardio/by/${id}`}
+          >
+            Back to Cardios
+          </Link>
+        </div>
       </div>
     );
   }

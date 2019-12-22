@@ -90,9 +90,14 @@ class EditBody extends Component {
   };
 
   editBodyForm = (height, age, weightToPush, activity) => (
-    <form>
+    <form
+      style={{
+        color: "white",
+        background: "#172B3E"
+      }}
+    >
       <div className="form-group">
-        <label className="text-muted">Height in inches</label>
+        <label>Height in inches</label>
         <input
           onChange={this.handleChange("height")}
           type="number"
@@ -101,7 +106,7 @@ class EditBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">Age</label>
+        <label>Age</label>
         <input
           onChange={this.handleChange("age")}
           type="number"
@@ -110,7 +115,7 @@ class EditBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">Current weight in pounds</label>
+        <label>Current weight in pounds</label>
         <input
           onChange={this.handleChange("weightToPush")}
           type="number"
@@ -119,9 +124,7 @@ class EditBody extends Component {
         />
       </div>
       <div>
-        <h6 className="text-muted" style={{ marginBottom: "10px" }}>
-          Activity Level
-        </h6>
+        <h6 style={{ marginBottom: "10px" }}>Activity Level</h6>
         <ul>
           <li>Sedentary: Little to no exercise</li>
           <li>Lightly Active: Light exerciese 1-3 days per week</li>
@@ -143,7 +146,11 @@ class EditBody extends Component {
         </select>
       </div>
 
-      <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
+      <button
+        style={{ margin: "10px" }}
+        onClick={this.clickSubmit}
+        className="btn btn-raised btn-primary"
+      >
         Update Body
       </button>
     </form>
@@ -167,9 +174,7 @@ class EditBody extends Component {
     }
 
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">{name}</h2>
-
+      <div style={{ background: "#172B3E", height: "100vh" }}>
         <div
           className="alert alert-danger"
           style={{ display: error ? "" : "none" }}
