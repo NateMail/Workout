@@ -12,7 +12,7 @@ const Home = ({ history }) => (
   <div style={{ background: "#172B3E", height: "100vh" }}>
     {!isAuthenticated() && (
       <>
-        <h1>Workout App</h1>
+        <h1 style={{ color: "white" }}>Workout App</h1>
       </>
     )}
     {isAuthenticated() && (

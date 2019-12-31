@@ -45,8 +45,8 @@ class Signup extends Component {
   render() {
     const { name, email, password, error, open } = this.state;
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">Sign Up</h2>
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <h2 style={{ textAlign: "center", color: "white" }}>Sign Up</h2>
 
         <div
           className="alert alert-primary"
@@ -63,9 +63,16 @@ class Signup extends Component {
           <Link to="/signin">Sign In</Link>
         </div>
 
-        <form>
-          <div className="form-group">
-            <label className="text-muted">Name</label>
+        <form
+          style={{
+            background: "#293B4D",
+            color: "white",
+            border: "5px black solid",
+            padding: "5px"
+          }}
+        >
+          <div className="form-group" style={{ textAlign: "center" }}>
+            <label>Name</label>
             <input
               onChange={this.handleChange("name")}
               type="text"
@@ -73,8 +80,8 @@ class Signup extends Component {
               value={name}
             />
           </div>
-          <div className="form-group">
-            <label className="text-muted">Email</label>
+          <div className="form-group" style={{ textAlign: "center" }}>
+            <label>Email</label>
             <input
               onChange={this.handleChange("email")}
               type="text"
@@ -82,8 +89,8 @@ class Signup extends Component {
               value={email}
             />
           </div>
-          <div className="form-group">
-            <label className="text-muted">Password</label>
+          <div className="form-group" style={{ textAlign: "center" }}>
+            <label>Password</label>
             <input
               onChange={this.handleChange("password")}
               type="password"
@@ -94,6 +101,7 @@ class Signup extends Component {
           <button
             onClick={this.clickSubmit}
             className="btn btn-raised btn-primary"
+            style={{ margin: "0px 47%" }}
           >
             Submit
           </button>

@@ -46,12 +46,8 @@ class Signin extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">Sign In</h2>
-
-        {/* <hr />
-        <SocialLogin />
-        <hr /> */}
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <h2 style={{ textAlign: "center", color: "white" }}>Sign In</h2>
 
         <div
           className="alert alert-danger"
@@ -68,9 +64,16 @@ class Signin extends Component {
           ""
         )}
 
-        <form>
-          <div className="form-group">
-            <label className="text-muted">Email</label>
+        <form
+          style={{
+            background: "#293B4D",
+            color: "white",
+            border: "5px black solid",
+            padding: "5px"
+          }}
+        >
+          <div className="form-group" style={{ textAlign: "center" }}>
+            <label>Email</label>
             <input
               onChange={this.handleChange("email")}
               type="text"
@@ -78,8 +81,8 @@ class Signin extends Component {
               value={email}
             />
           </div>
-          <div className="form-group">
-            <label className="text-muted">Password</label>
+          <div className="form-group" style={{ textAlign: "center" }}>
+            <label>Password</label>
             <input
               onChange={this.handleChange("password")}
               type="password"
@@ -90,6 +93,7 @@ class Signin extends Component {
           <button
             onClick={this.clickSubmit}
             className="btn btn-raised btn-primary"
+            style={{ margin: "0px 47%" }}
           >
             Submit
           </button>
