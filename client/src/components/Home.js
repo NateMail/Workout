@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Home = ({ history }) => (
-  <div>
+  <div style={{ background: "#172B3E", height: "100vh" }}>
     {!isAuthenticated() && (
       <>
         <h1>Workout App</h1>
