@@ -125,9 +125,16 @@ class NewBody extends Component {
   };
 
   newBodyForm = (height, weight, age) => (
-    <form>
+    <form
+      style={{
+        background: "#293B4D",
+        color: "white",
+        border: "5px black solid",
+        padding: "5px"
+      }}
+    >
       <div className="form-group">
-        <label className="text-muted">Height in inches</label>
+        <label>Height in inches</label>
         <input
           onChange={this.handleChange("height")}
           type="number"
@@ -136,7 +143,7 @@ class NewBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">Weight in pounds</label>
+        <label>Weight in pounds</label>
         <input
           onChange={this.handleChange("weight")}
           type="number"
@@ -145,7 +152,7 @@ class NewBody extends Component {
         />
       </div>
       <div className="form-group">
-        <label className="text-muted">Age</label>
+        <label>Age</label>
         <input
           onChange={this.handleChange("age")}
           type="number"
@@ -153,12 +160,10 @@ class NewBody extends Component {
           value={age}
         />
       </div>
-      <h6 className="text-muted" style={{ marginBottom: "10px" }}>
-        Sex
-      </h6>
+      <h6 style={{ marginBottom: "10px" }}>Sex</h6>
       <div className="row" style={{ textAlign: "center" }}>
         <div className="form-check">
-          <label className="text-muted">Female</label>
+          <label>Female</label>
           <input
             onChange={this.handleChange("sex")}
             type="radio"
@@ -168,7 +173,7 @@ class NewBody extends Component {
           />
         </div>
         <div className="form-check">
-          <label className="text-muted">Male</label>
+          <label>Male</label>
           <input
             onChange={this.handleChange("sex")}
             type="radio"
@@ -179,9 +184,7 @@ class NewBody extends Component {
         </div>
       </div>
 
-      <h6 className="text-muted" style={{ marginBottom: "10px" }}>
-        Activity Level
-      </h6>
+      <h6 style={{ marginBottom: "10px" }}>Activity Level</h6>
       <ul>
         <li>Sedentary: Little to no exercise</li>
         <li>Lightly Active: Light exerciese 1-3 days per week</li>
@@ -225,8 +228,10 @@ class NewBody extends Component {
     }
 
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">Create Body Type</h2>
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <h2 style={{ textAlign: "center", color: "white" }}>
+          Create Body Type
+        </h2>
         <div
           className="alert alert-danger"
           style={{ display: error ? "" : "none" }}
