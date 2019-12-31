@@ -70,37 +70,51 @@ class NewCardio extends Component {
   };
 
   newCardioForm = (workoutName, time, distance) => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">Workout Name</label>
+    <form
+      style={{
+        background: "#293B4D",
+        color: "white",
+        border: "5px black solid",
+        padding: "5px"
+      }}
+    >
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Workout Name</label>
         <input
           onChange={this.handleChange("workoutName")}
           placeholder="Workout"
           type="text"
           className="form-control"
           value={workoutName}
+          style={{ textAlign: "center" }}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">Time in minutes</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Time in minutes</label>
         <input
           onChange={this.handleChange("time")}
           type="number"
           className="form-control"
           value={time}
+          style={{ textAlign: "center" }}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">Distance in miles</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Distance in miles</label>
         <input
           onChange={this.handleChange("distance")}
           type="number"
           className="form-control"
           value={distance}
+          style={{ textAlign: "center" }}
         />
       </div>
 
-      <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
+      <button
+        onClick={this.clickSubmit}
+        className="btn btn-raised btn-primary"
+        style={{ margin: "0px 45%" }}
+      >
         Create Your Cardio Workout
       </button>
     </form>
@@ -122,8 +136,10 @@ class NewCardio extends Component {
     }
 
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">Create Cardio Workout</h2>
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <h2 style={{ textAlign: "center", color: "white" }}>
+          Create Cardio Workout
+        </h2>
         <div
           className="alert alert-danger"
           style={{ display: error ? "" : "none" }}

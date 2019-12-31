@@ -71,46 +71,61 @@ class NewLift extends Component {
   };
 
   newLiftForm = (workoutName, weight, reps, sets) => (
-    <form>
-      <div className="form-group">
-        <label className="text-muted">Workout Name</label>
+    <form
+      style={{
+        background: "#293B4D",
+        color: "white",
+        border: "5px black solid",
+        padding: "5px"
+      }}
+    >
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Workout Name</label>
         <input
           onChange={this.handleChange("workoutName")}
           placeholder="Workout"
           type="text"
           className="form-control"
           value={workoutName}
+          style={{ textAlign: "center" }}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">Weight in pounds</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>Weight in pounds</label>
         <input
           onChange={this.handleChange("weight")}
           type="number"
           className="form-control"
           value={weight}
+          style={{ textAlign: "center" }}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">How many reps?</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>How many reps?</label>
         <input
           onChange={this.handleChange("reps")}
           type="number"
           className="form-control"
           value={reps}
+          style={{ textAlign: "center" }}
         />
       </div>
-      <div className="form-group">
-        <label className="text-muted">How many sets?</label>
+      <div className="form-group" style={{ textAlign: "center" }}>
+        <label>How many sets?</label>
         <input
           onChange={this.handleChange("sets")}
           type="number"
           className="form-control"
           value={sets}
+          style={{ textAlign: "center" }}
         />
       </div>
 
-      <button onClick={this.clickSubmit} className="btn btn-raised btn-primary">
+      <button
+        onClick={this.clickSubmit}
+        className="btn btn-raised btn-primary"
+        style={{ margin: "0px 45%" }}
+      >
         Create Your Lift
       </button>
     </form>
@@ -133,8 +148,8 @@ class NewLift extends Component {
     }
 
     return (
-      <div className="container">
-        <h2 className="mt-5 mb-5">Create Lift</h2>
+      <div style={{ background: "#172B3E", height: "100vh" }}>
+        <h2 style={{ textAlign: "center", color: "white" }}>Create Lift</h2>
         <div
           className="alert alert-danger"
           style={{ display: error ? "" : "none" }}
