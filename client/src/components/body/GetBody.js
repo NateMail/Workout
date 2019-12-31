@@ -62,8 +62,6 @@ class GetBody extends Component {
 
     if (bodys !== undefined && bodys.length !== 0) {
       bodys.forEach(bod => {
-        bod.tdee = bod.tdee.toFixed(0);
-        bod.bmr = bod.bmr.toFixed(0);
         bod.lose = (bod.tdee - bod.tdee * 0.2).toFixed(0);
         bod.protein = ((bod.tdee * 0.3) / 4).toFixed(0);
         bod.fats = ((bod.tdee * 0.3) / 9).toFixed(0);
@@ -79,7 +77,7 @@ class GetBody extends Component {
     }
 
     return (
-      <div style={{ background: "#182B3E", color: "white" }}>
+      <div style={{ background: "#182B3E", color: "white", height: "100vh" }}>
         <div style={{ marginBottom: "20px" }}>
           {bodys.map(function(b, idx) {
             return (
@@ -108,17 +106,17 @@ class GetBody extends Component {
                       <th>{b.height} inches</th>
                       <th>{b.age} years old</th>
                       <th>{b.sex}</th>
-                      <th>{b.tdee} calories</th>
+                      <th>{b.tdee.toFixed(0)} calories</th>
                     </tr>
                   </tbody>
                 </Table>
                 <p>
                   TDEE is your Total Daily Energy Expenditure. This is based off
-                  your Base Metabolic Rate: {b.bmr} cals. This is the base
-                  number at which your body uses energy when you are resting.
-                  All of this is based on your weight, height, age, sex, and
-                  activity level. As you lose weight or gain weight these
-                  numbers will change.
+                  your Base Metabolic Rate: {b.bmr.toFixed(0)} cals. This is the
+                  base number at which your body uses energy when you are
+                  resting. All of this is based on your weight, height, age,
+                  sex, and activity level. As you lose weight or gain weight
+                  these numbers will change.
                 </p>
                 <h4>Your starting weight was: {b.weight[0]} pounds</h4>
                 <h4>
@@ -155,7 +153,7 @@ class GetBody extends Component {
                     </tr>
                     <tr>
                       <td>Maintain Current Weight</td>
-                      <td>{b.tdee} cals</td>
+                      <td>{b.tdee.toFixed(0)} cals</td>
                       <td>{b.protein}g</td>
                       <td>{b.fats}g</td>
                       <td>{b.carbs}g</td>
