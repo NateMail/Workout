@@ -39,10 +39,6 @@ app.use("/", bodyRoutes);
 app.use("/", cardioRoutes);
 app.use("/", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
-
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
