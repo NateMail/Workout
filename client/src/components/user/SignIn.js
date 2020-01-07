@@ -51,6 +51,10 @@ class Signin extends Component {
         <h3 style={{ textAlign: "center", color: "white" }}>
           Do not use real email or password this is not a secure server
         </h3>
+        <h6 style={{ textAlign: "center", color: "white" }}>
+          App maybe slow loading. If it is try signing in and waiting a few
+          minutes. Then try signing in again.
+        </h6>
 
         <div
           className="alert alert-danger"
