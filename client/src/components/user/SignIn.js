@@ -48,6 +48,9 @@ class Signin extends Component {
     return (
       <div style={{ background: "#172B3E", height: "100vh" }}>
         <h2 style={{ textAlign: "center", color: "white" }}>Sign In</h2>
+        <h3 style={{ textAlign: "center", color: "white" }}>
+          Do not use real email or password this is not a secure server
+        </h3>
 
         <div
           className="alert alert-danger"
