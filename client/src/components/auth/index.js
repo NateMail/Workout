@@ -14,7 +14,7 @@ export const signup = user => {
 };
 
 export const signin = user => {
-  return fetch("https://mighty-temple-74779.herokuapp.com//signin", {
+  return fetch("https://mighty-temple-74779.herokuapp.com/signin", {
     method: "POST",
     headers: {
       Accept: "application/json",
