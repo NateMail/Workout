@@ -17,15 +17,15 @@ For this application my goal was to create a workout application that would be e
 
 ## User Stories:
 
-1. User should be able to create an account
-2. User should be able to sign into their account
-3. User can create their body specifications to their profile
-4. User can update any of their body specifications
-5. User can create a lifting workout
-6. User can update a lifting workout
-7. User can delete a lifting workout
-8. User can create a cardio workout
-9. User can update a cardio workout
+1.  User should be able to create an account
+2.  User should be able to sign into their account
+3.  User can create their body specifications to their profile
+4.  User can update any of their body specifications
+5.  User can create a lifting workout
+6.  User can update a lifting workout
+7.  User can delete a lifting workout
+8.  User can create a cardio workout
+9.  User can update a cardio workout
 10. User can delete a cardio workout
 
 ## Future Updates
