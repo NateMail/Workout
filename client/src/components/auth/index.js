@@ -1,5 +1,5 @@
 export const signup = user => {
-  return fetch("http://localhost:8181/signup", {
+  return fetch("https://mighty-temple-74779.herokuapp.com/signup", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -14,7 +14,7 @@ export const signup = user => {
 };
 
 export const signin = user => {
-  return fetch("http://localhost:8181/signin", {
+  return fetch("https://mighty-temple-74779.herokuapp.com//signin", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -38,7 +38,7 @@ export const authenticate = (jwt, next) => {
 export const signout = next => {
   if (typeof window !== "undefined") localStorage.removeItem("jwt");
   next();
-  return fetch("http://localhost:8181/signout", {
+  return fetch("https://mighty-temple-74779.herokuapp.com/signout", {
     method: "GET"
   })
     .then(response => {

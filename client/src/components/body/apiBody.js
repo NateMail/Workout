@@ -1,5 +1,5 @@
 export const create = (userId, token, userBody) => {
-  return fetch(`http://localhost:8181/body/new/${userId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/body/new/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -14,7 +14,7 @@ export const create = (userId, token, userBody) => {
 };
 
 export const getBody = (userId, token) => {
-  return fetch(`http://localhost:8181/body/by/${userId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/body/by/${userId}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -29,14 +29,17 @@ export const getBody = (userId, token) => {
 };
 
 export const update = (bodyId, token, bodys) => {
-  return fetch(`http://localhost:8181/body/edit/${bodyId}`, {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: bodys
-  })
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/body/edit/${bodyId}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: bodys
+    }
+  )
     .then(response => {
       return response.json();
     })
@@ -44,7 +47,7 @@ export const update = (bodyId, token, bodys) => {
 };
 
 export const singleBody = (bodyId, token) => {
-  return fetch(`http://localhost:8181/body/${bodyId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/body/${bodyId}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`

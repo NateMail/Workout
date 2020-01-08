@@ -1,5 +1,5 @@
 export const read = (userId, token) => {
-  return fetch(`http://localhost:8181/user/${userId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/user/${userId}`, {
     method: "GET",
     headers: {
       Accept: "application/json",

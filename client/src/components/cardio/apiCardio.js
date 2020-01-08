@@ -1,12 +1,15 @@
 export const create = (userId, token, userCardio) => {
-  return fetch(`http://localhost:8181/cardio/new/${userId}`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: userCardio
-  })
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/cardio/new/${userId}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: userCardio
+    }
+  )
     .then(response => {
       return response.json();
     })
@@ -14,14 +17,17 @@ export const create = (userId, token, userCardio) => {
 };
 
 export const getCardio = (userId, token) => {
-  return fetch(`http://localhost:8181/cardio/by/${userId}`, {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/cardio/by/${userId}`,
+    {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
     .then(response => {
       return response.json();
     })
@@ -29,7 +35,7 @@ export const getCardio = (userId, token) => {
 };
 
 export const singleCardio = (cardioId, token) => {
-  return fetch(`http://localhost:8181/cardio/${cardioId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/cardio/${cardioId}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`
@@ -42,14 +48,17 @@ export const singleCardio = (cardioId, token) => {
 };
 
 export const remove = (cardioId, token) => {
-  return fetch(`http://localhost:8181/cardio/remove/${cardioId}`, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/cardio/remove/${cardioId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
     .then(response => {
       return response.json();
     })
@@ -57,14 +66,17 @@ export const remove = (cardioId, token) => {
 };
 
 export const update = (cardioId, token, cardio) => {
-  return fetch(`http://localhost:8181/cardio/edit/${cardioId}`, {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: cardio
-  })
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/cardio/edit/${cardioId}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: cardio
+    }
+  )
     .then(response => {
       return response.json();
     })

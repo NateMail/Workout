@@ -1,6 +1,6 @@
 export const create = (userId, token, userLift) => {
   console.log(userLift);
-  return fetch(`http://localhost:8181/lift/new/${userId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/lift/new/${userId}`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -15,7 +15,7 @@ export const create = (userId, token, userLift) => {
 };
 
 export const getLift = (userId, token) => {
-  return fetch(`http://localhost:8181/lift/by/${userId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/lift/by/${userId}`, {
     method: "GET",
     headers: {
       Accept: "application/json",
@@ -30,7 +30,7 @@ export const getLift = (userId, token) => {
 };
 
 export const singleLift = (liftId, token) => {
-  return fetch(`http://localhost:8181/lift/${liftId}`, {
+  return fetch(`https://mighty-temple-74779.herokuapp.com/lift/${liftId}`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`
@@ -43,14 +43,17 @@ export const singleLift = (liftId, token) => {
 };
 
 export const remove = (liftId, token) => {
-  return fetch(`http://localhost:8181/lift/remove/${liftId}`, {
-    method: "DELETE",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/lift/remove/${liftId}`,
+    {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
     }
-  })
+  )
     .then(response => {
       return response.json();
     })
@@ -58,14 +61,17 @@ export const remove = (liftId, token) => {
 };
 
 export const update = (liftId, token, lift) => {
-  return fetch(`http://localhost:8181/lift/edit/${liftId}`, {
-    method: "PUT",
-    headers: {
-      Accept: "application/json",
-      Authorization: `Bearer ${token}`
-    },
-    body: lift
-  })
+  return fetch(
+    `https://mighty-temple-74779.herokuapp.com/lift/edit/${liftId}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: lift
+    }
+  )
     .then(response => {
       return response.json();
     })
